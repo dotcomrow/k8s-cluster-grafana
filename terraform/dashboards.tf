@@ -1,7 +1,7 @@
 resource "grafana_dashboard" "CPU" {
   provider = grafana.cloud
 
-  config_json = file("${path.module}/dashboards/cpu_dashboard.json")
+  config_json = file("${path.module}/dashboards/cpu_metrics_dashboard.json")
   folder      = grafana_folder.CPU.id
 }
 
