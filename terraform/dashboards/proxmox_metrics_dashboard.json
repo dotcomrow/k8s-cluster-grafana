@@ -1,6 +1,6 @@
 {
   "id": null,
-  "uid": "413a21ac",
+  "uid": "55e7c0c8",
   "title": "Proxmox Metrics",
   "timezone": "browser",
   "schemaVersion": 36,
@@ -8,42 +8,8 @@
   "refresh": "10s",
   "panels": [
     {
-      "id": 95394,
-      "title": "Cluster Load Average (1m)",
-      "type": "timeseries",
-      "datasource": {
-        "type": "influxdb",
-        "uid": "eehtcd6pg4pvka"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "unit": "none",
-          "decimals": 2
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 6,
-        "x": 0,
-        "y": 0
-      },
-      "targets": [
-        {
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"system\" and r._field == \"load1\")",
-          "refId": "A"
-        }
-      ],
-      "options": {
-        "legend": {
-          "displayMode": "table",
-          "placement": "bottom"
-        }
-      }
-    },
-    {
-      "id": 7781,
-      "title": "Node CPU Usage",
+      "id": 12527,
+      "title": "CPU Usage",
       "type": "timeseries",
       "datasource": {
         "type": "influxdb",
@@ -58,13 +24,13 @@
       },
       "gridPos": {
         "h": 8,
-        "w": 6,
+        "w": 8,
         "x": 0,
         "y": 0
       },
       "targets": [
         {
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"cpu\" and r._field == \"usage_system\")",
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"cpu\" and r._field == \"usage_system\" and r.node == \"pve\")",
           "refId": "A"
         }
       ],
@@ -76,8 +42,8 @@
       }
     },
     {
-      "id": 43412,
-      "title": "Node Memory Usage",
+      "id": 30476,
+      "title": "Memory Usage",
       "type": "timeseries",
       "datasource": {
         "type": "influxdb",
@@ -85,20 +51,20 @@
       },
       "fieldConfig": {
         "defaults": {
-          "unit": "bytes",
+          "unit": "percent",
           "decimals": 2
         },
         "overrides": []
       },
       "gridPos": {
         "h": 8,
-        "w": 6,
-        "x": 0,
+        "w": 8,
+        "x": 8,
         "y": 0
       },
       "targets": [
         {
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"mem\" and r._field == \"used\")",
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"mem\" and r._field == \"used_percent\" and r.node == \"pve\")",
           "refId": "A"
         }
       ],
@@ -110,8 +76,8 @@
       }
     },
     {
-      "id": 20756,
-      "title": "Node Disk Usage",
+      "id": 20918,
+      "title": "Disk Usage",
       "type": "timeseries",
       "datasource": {
         "type": "influxdb",
@@ -119,20 +85,88 @@
       },
       "fieldConfig": {
         "defaults": {
-          "unit": "bytes",
+          "unit": "percent",
           "decimals": 2
         },
         "overrides": []
       },
       "gridPos": {
         "h": 8,
-        "w": 6,
-        "x": 0,
+        "w": 8,
+        "x": 16,
         "y": 0
       },
       "targets": [
         {
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"disk\" and r._field == \"used\")",
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"disk\" and r._field == \"used_percent\" and r.node == \"pve\")",
+          "refId": "A"
+        }
+      ],
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "bottom"
+        }
+      }
+    },
+    {
+      "id": 42989,
+      "title": "Network In",
+      "type": "timeseries",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "eehtcd6pg4pvka"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "Bps",
+          "decimals": 2
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 0,
+        "y": 9
+      },
+      "targets": [
+        {
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"net\" and r._field == \"bytes_recv\" and r.node == \"pve\")",
+          "refId": "A"
+        }
+      ],
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "bottom"
+        }
+      }
+    },
+    {
+      "id": 42638,
+      "title": "Network Out",
+      "type": "timeseries",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "eehtcd6pg4pvka"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "Bps",
+          "decimals": 2
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 8,
+        "y": 9
+      },
+      "targets": [
+        {
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"net\" and r._field == \"bytes_sent\" and r.node == \"pve\")",
           "refId": "A"
         }
       ],
