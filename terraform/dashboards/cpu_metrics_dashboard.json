@@ -1,6 +1,6 @@
 {
   "id": null,
-  "uid": "689feb99",
+  "uid": "0aa20392",
   "title": "CPU Metrics",
   "timezone": "browser",
   "schemaVersion": 36,
@@ -8,7 +8,7 @@
   "refresh": "10s",
   "panels": [
     {
-      "id": 69002,
+      "id": 37099,
       "title": "Total CPU Usage (System)",
       "type": "timeseries",
       "datasource": {
@@ -31,7 +31,7 @@
       "targets": [
         {
           "refId": "A",
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"cpu\" and r._field == \"usage_system\")\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> group(columns: [\"_time\"])\n  |> sum()"
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"cpu\" and r._field == \"usage_system\")\n  |> aggregateWindow(every: 1m, fn: sum)\n  |> yield(name: \"sum\")"
         }
       ],
       "options": {
@@ -42,7 +42,7 @@
       }
     },
     {
-      "id": 43639,
+      "id": 39395,
       "title": "Total CPU Usage (User)",
       "type": "timeseries",
       "datasource": {
@@ -65,7 +65,7 @@
       "targets": [
         {
           "refId": "A",
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"cpu\" and r._field == \"usage_user\")\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> group(columns: [\"_time\"])\n  |> sum()"
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"cpu\" and r._field == \"usage_user\")\n  |> aggregateWindow(every: 1m, fn: sum)\n  |> yield(name: \"sum\")"
         }
       ],
       "options": {
@@ -76,7 +76,7 @@
       }
     },
     {
-      "id": 32,
+      "id": 77326,
       "title": "Total CPU Usage (Active)",
       "type": "timeseries",
       "datasource": {
@@ -99,7 +99,7 @@
       "targets": [
         {
           "refId": "A",
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"cpu\" and r._field == \"usage_active\")\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> group(columns: [\"_time\"])\n  |> sum()"
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"cpu\" and r._field == \"usage_active\")\n  |> aggregateWindow(every: 1m, fn: sum)\n  |> yield(name: \"sum\")"
         }
       ],
       "options": {
