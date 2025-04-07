@@ -1,6 +1,6 @@
 {
   "id": null,
-  "uid": "0cf1d779",
+  "uid": "84578d24",
   "title": "Disk Metrics",
   "timezone": "browser",
   "schemaVersion": 36,
@@ -8,7 +8,7 @@
   "refresh": "10s",
   "panels": [
     {
-      "id": 95352,
+      "id": 18382,
       "title": "Cluster Disk Usage",
       "type": "timeseries",
       "datasource": {
@@ -18,21 +18,7 @@
       "fieldConfig": {
         "defaults": {
           "unit": "percent",
-          "decimals": 2,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 90
-              }
-            ]
-          }
+          "decimals": 2
         },
         "overrides": []
       },
@@ -44,23 +30,8 @@
       },
       "targets": [
         {
-          "groupBy": [],
-          "measurement": "disk",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "type": "mean",
-                "params": [
-                  "used_percent"
-                ]
-              }
-            ]
-          ],
-          "tags": []
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"disk\" and r._field == \"used_percent\")",
+          "refId": "A"
         }
       ],
       "options": {
@@ -71,7 +42,7 @@
       }
     },
     {
-      "id": 26333,
+      "id": 31188,
       "title": "Node Disk Usage",
       "type": "timeseries",
       "datasource": {
@@ -81,21 +52,7 @@
       "fieldConfig": {
         "defaults": {
           "unit": "bytes",
-          "decimals": 2,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 90
-              }
-            ]
-          }
+          "decimals": 2
         },
         "overrides": []
       },
@@ -107,23 +64,8 @@
       },
       "targets": [
         {
-          "groupBy": [],
-          "measurement": "disk",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "type": "mean",
-                "params": [
-                  "used"
-                ]
-              }
-            ]
-          ],
-          "tags": []
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"disk\" and r._field == \"used\")",
+          "refId": "A"
         }
       ],
       "options": {
@@ -134,7 +76,7 @@
       }
     },
     {
-      "id": 5022,
+      "id": 37475,
       "title": "Pod Disk Usage",
       "type": "timeseries",
       "datasource": {
@@ -144,21 +86,7 @@
       "fieldConfig": {
         "defaults": {
           "unit": "bytes",
-          "decimals": 2,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 90
-              }
-            ]
-          }
+          "decimals": 2
         },
         "overrides": []
       },
@@ -170,23 +98,8 @@
       },
       "targets": [
         {
-          "groupBy": [],
-          "measurement": "disk",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "type": "mean",
-                "params": [
-                  "free"
-                ]
-              }
-            ]
-          ],
-          "tags": []
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"disk\" and r._field == \"free\")",
+          "refId": "A"
         }
       ],
       "options": {
@@ -197,7 +110,7 @@
       }
     },
     {
-      "id": 15196,
+      "id": 42846,
       "title": "Container Disk Usage",
       "type": "timeseries",
       "datasource": {
@@ -207,21 +120,7 @@
       "fieldConfig": {
         "defaults": {
           "unit": "none",
-          "decimals": 2,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 90
-              }
-            ]
-          }
+          "decimals": 2
         },
         "overrides": []
       },
@@ -233,23 +132,8 @@
       },
       "targets": [
         {
-          "groupBy": [],
-          "measurement": "disk",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "type": "mean",
-                "params": [
-                  "inodes_used"
-                ]
-              }
-            ]
-          ],
-          "tags": []
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"disk\" and r._field == \"inodes_used\")",
+          "refId": "A"
         }
       ],
       "options": {

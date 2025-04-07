@@ -1,6 +1,6 @@
 {
   "id": null,
-  "uid": "cd5f8e6a",
+  "uid": "0136131d",
   "title": "Network Metrics",
   "timezone": "browser",
   "schemaVersion": 36,
@@ -8,8 +8,8 @@
   "refresh": "10s",
   "panels": [
     {
-      "id": 13657,
-      "title": "Node Network Traffic In",
+      "id": 91159,
+      "title": "Network Traffic In",
       "type": "timeseries",
       "datasource": {
         "type": "influxdb",
@@ -18,21 +18,7 @@
       "fieldConfig": {
         "defaults": {
           "unit": "Bps",
-          "decimals": 2,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 90
-              }
-            ]
-          }
+          "decimals": 2
         },
         "overrides": []
       },
@@ -44,23 +30,8 @@
       },
       "targets": [
         {
-          "groupBy": [],
-          "measurement": "net",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "type": "mean",
-                "params": [
-                  "bytes_recv"
-                ]
-              }
-            ]
-          ],
-          "tags": []
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"net\" and r._field == \"bytes_recv\")",
+          "refId": "A"
         }
       ],
       "options": {
@@ -71,8 +42,8 @@
       }
     },
     {
-      "id": 99857,
-      "title": "Node Network Traffic Out",
+      "id": 87386,
+      "title": "Network Traffic Out",
       "type": "timeseries",
       "datasource": {
         "type": "influxdb",
@@ -81,21 +52,7 @@
       "fieldConfig": {
         "defaults": {
           "unit": "Bps",
-          "decimals": 2,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 90
-              }
-            ]
-          }
+          "decimals": 2
         },
         "overrides": []
       },
@@ -107,23 +64,8 @@
       },
       "targets": [
         {
-          "groupBy": [],
-          "measurement": "net",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "type": "mean",
-                "params": [
-                  "bytes_sent"
-                ]
-              }
-            ]
-          ],
-          "tags": []
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"net\" and r._field == \"bytes_sent\")",
+          "refId": "A"
         }
       ],
       "options": {
@@ -134,7 +76,7 @@
       }
     },
     {
-      "id": 11063,
+      "id": 14003,
       "title": "Packets Received",
       "type": "timeseries",
       "datasource": {
@@ -144,21 +86,7 @@
       "fieldConfig": {
         "defaults": {
           "unit": "pps",
-          "decimals": 2,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 90
-              }
-            ]
-          }
+          "decimals": 2
         },
         "overrides": []
       },
@@ -170,23 +98,8 @@
       },
       "targets": [
         {
-          "groupBy": [],
-          "measurement": "net",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "type": "mean",
-                "params": [
-                  "packets_recv"
-                ]
-              }
-            ]
-          ],
-          "tags": []
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"net\" and r._field == \"packets_recv\")",
+          "refId": "A"
         }
       ],
       "options": {
@@ -197,7 +110,7 @@
       }
     },
     {
-      "id": 85353,
+      "id": 88719,
       "title": "Packets Sent",
       "type": "timeseries",
       "datasource": {
@@ -207,21 +120,7 @@
       "fieldConfig": {
         "defaults": {
           "unit": "pps",
-          "decimals": 2,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 90
-              }
-            ]
-          }
+          "decimals": 2
         },
         "overrides": []
       },
@@ -233,23 +132,8 @@
       },
       "targets": [
         {
-          "groupBy": [],
-          "measurement": "net",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "type": "mean",
-                "params": [
-                  "packets_sent"
-                ]
-              }
-            ]
-          ],
-          "tags": []
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"net\" and r._field == \"packets_sent\")",
+          "refId": "A"
         }
       ],
       "options": {

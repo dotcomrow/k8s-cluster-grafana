@@ -1,6 +1,6 @@
 {
   "id": null,
-  "uid": "b1c64959",
+  "uid": "04d3aae9",
   "title": "Memory Metrics",
   "timezone": "browser",
   "schemaVersion": 36,
@@ -8,7 +8,7 @@
   "refresh": "10s",
   "panels": [
     {
-      "id": 27307,
+      "id": 42696,
       "title": "Cluster Memory Utilization",
       "type": "timeseries",
       "datasource": {
@@ -18,21 +18,7 @@
       "fieldConfig": {
         "defaults": {
           "unit": "percent",
-          "decimals": 2,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 90
-              }
-            ]
-          }
+          "decimals": 2
         },
         "overrides": []
       },
@@ -44,23 +30,8 @@
       },
       "targets": [
         {
-          "groupBy": [],
-          "measurement": "mem",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "type": "mean",
-                "params": [
-                  "used_percent"
-                ]
-              }
-            ]
-          ],
-          "tags": []
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"mem\" and r._field == \"used_percent\")",
+          "refId": "A"
         }
       ],
       "options": {
@@ -71,7 +42,7 @@
       }
     },
     {
-      "id": 79228,
+      "id": 61887,
       "title": "Node Memory Usage",
       "type": "timeseries",
       "datasource": {
@@ -81,21 +52,7 @@
       "fieldConfig": {
         "defaults": {
           "unit": "bytes",
-          "decimals": 2,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 90
-              }
-            ]
-          }
+          "decimals": 2
         },
         "overrides": []
       },
@@ -107,23 +64,8 @@
       },
       "targets": [
         {
-          "groupBy": [],
-          "measurement": "mem",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "type": "mean",
-                "params": [
-                  "used"
-                ]
-              }
-            ]
-          ],
-          "tags": []
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"mem\" and r._field == \"used\")",
+          "refId": "A"
         }
       ],
       "options": {
@@ -134,7 +76,7 @@
       }
     },
     {
-      "id": 39833,
+      "id": 31131,
       "title": "Pod Memory Usage",
       "type": "timeseries",
       "datasource": {
@@ -144,21 +86,7 @@
       "fieldConfig": {
         "defaults": {
           "unit": "bytes",
-          "decimals": 2,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 90
-              }
-            ]
-          }
+          "decimals": 2
         },
         "overrides": []
       },
@@ -170,23 +98,8 @@
       },
       "targets": [
         {
-          "groupBy": [],
-          "measurement": "mem",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "type": "mean",
-                "params": [
-                  "active"
-                ]
-              }
-            ]
-          ],
-          "tags": []
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"mem\" and r._field == \"active\")",
+          "refId": "A"
         }
       ],
       "options": {
@@ -197,7 +110,7 @@
       }
     },
     {
-      "id": 19076,
+      "id": 49742,
       "title": "Container Memory Usage",
       "type": "timeseries",
       "datasource": {
@@ -207,21 +120,7 @@
       "fieldConfig": {
         "defaults": {
           "unit": "bytes",
-          "decimals": 2,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 90
-              }
-            ]
-          }
+          "decimals": 2
         },
         "overrides": []
       },
@@ -233,23 +132,8 @@
       },
       "targets": [
         {
-          "groupBy": [],
-          "measurement": "mem",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "type": "mean",
-                "params": [
-                  "cached"
-                ]
-              }
-            ]
-          ],
-          "tags": []
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"mem\" and r._field == \"cached\")",
+          "refId": "A"
         }
       ],
       "options": {

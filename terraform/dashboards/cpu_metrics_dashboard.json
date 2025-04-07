@@ -1,6 +1,6 @@
 {
   "id": null,
-  "uid": "e6d2e537",
+  "uid": "dbc8654c",
   "title": "CPU Metrics",
   "timezone": "browser",
   "schemaVersion": 36,
@@ -8,7 +8,7 @@
   "refresh": "10s",
   "panels": [
     {
-      "id": 1185,
+      "id": 82451,
       "title": "Cluster CPU Utilization",
       "type": "timeseries",
       "datasource": {
@@ -30,7 +30,7 @@
       },
       "targets": [
         {
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"cpu\" and r._field == \"0\" and r.type == \"usage_active\")",
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"cpu\" and r._field == \"usage_active\")",
           "refId": "A"
         }
       ],
@@ -42,7 +42,7 @@
       }
     },
     {
-      "id": 91894,
+      "id": 59042,
       "title": "Node CPU Usage",
       "type": "timeseries",
       "datasource": {
@@ -64,7 +64,7 @@
       },
       "targets": [
         {
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"cpu\" and r._field == \"0\" and r.type == \"usage_system\")",
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"cpu\" and r._field == \"usage_system\")",
           "refId": "A"
         }
       ],
@@ -76,7 +76,7 @@
       }
     },
     {
-      "id": 54512,
+      "id": 19069,
       "title": "Pod CPU Usage",
       "type": "timeseries",
       "datasource": {
@@ -98,7 +98,7 @@
       },
       "targets": [
         {
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"cpu\" and r._field == \"0\" and r.type == \"usage_user\")",
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"cpu\" and r._field == \"usage_user\")",
           "refId": "A"
         }
       ],
@@ -110,7 +110,7 @@
       }
     },
     {
-      "id": 48113,
+      "id": 23892,
       "title": "Container CPU Usage",
       "type": "timeseries",
       "datasource": {
@@ -132,7 +132,7 @@
       },
       "targets": [
         {
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"cpu\" and r._field == \"0\" and r.type == \"usage_guest\")",
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"cpu\" and r._field == \"usage_guest\")",
           "refId": "A"
         }
       ],

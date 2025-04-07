@@ -1,6 +1,6 @@
 {
   "id": null,
-  "uid": "2baaef52",
+  "uid": "5fa06e7f",
   "title": "PFSense Metrics",
   "timezone": "browser",
   "schemaVersion": 36,
@@ -8,7 +8,7 @@
   "refresh": "10s",
   "panels": [
     {
-      "id": 93969,
+      "id": 95945,
       "title": "WAN Traffic In",
       "type": "timeseries",
       "datasource": {
@@ -18,21 +18,7 @@
       "fieldConfig": {
         "defaults": {
           "unit": "Bps",
-          "decimals": 2,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 90
-              }
-            ]
-          }
+          "decimals": 2
         },
         "overrides": []
       },
@@ -44,23 +30,8 @@
       },
       "targets": [
         {
-          "groupBy": [],
-          "measurement": "net",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "type": "mean",
-                "params": [
-                  "bytes_recv"
-                ]
-              }
-            ]
-          ],
-          "tags": []
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"net\" and r._field == \"bytes_recv\")",
+          "refId": "A"
         }
       ],
       "options": {
@@ -71,7 +42,7 @@
       }
     },
     {
-      "id": 47461,
+      "id": 38873,
       "title": "WAN Traffic Out",
       "type": "timeseries",
       "datasource": {
@@ -81,21 +52,7 @@
       "fieldConfig": {
         "defaults": {
           "unit": "Bps",
-          "decimals": 2,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 90
-              }
-            ]
-          }
+          "decimals": 2
         },
         "overrides": []
       },
@@ -107,23 +64,8 @@
       },
       "targets": [
         {
-          "groupBy": [],
-          "measurement": "net",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "type": "mean",
-                "params": [
-                  "bytes_sent"
-                ]
-              }
-            ]
-          ],
-          "tags": []
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"net\" and r._field == \"bytes_sent\")",
+          "refId": "A"
         }
       ],
       "options": {
@@ -134,7 +76,7 @@
       }
     },
     {
-      "id": 67965,
+      "id": 97583,
       "title": "Disk Usage",
       "type": "timeseries",
       "datasource": {
@@ -144,21 +86,7 @@
       "fieldConfig": {
         "defaults": {
           "unit": "percent",
-          "decimals": 2,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 90
-              }
-            ]
-          }
+          "decimals": 2
         },
         "overrides": []
       },
@@ -170,23 +98,8 @@
       },
       "targets": [
         {
-          "groupBy": [],
-          "measurement": "disk",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "type": "mean",
-                "params": [
-                  "used_percent"
-                ]
-              }
-            ]
-          ],
-          "tags": []
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"disk\" and r._field == \"used_percent\")",
+          "refId": "A"
         }
       ],
       "options": {
@@ -197,7 +110,7 @@
       }
     },
     {
-      "id": 65333,
+      "id": 28300,
       "title": "CPU Load",
       "type": "timeseries",
       "datasource": {
@@ -207,21 +120,7 @@
       "fieldConfig": {
         "defaults": {
           "unit": "percent",
-          "decimals": 2,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 90
-              }
-            ]
-          }
+          "decimals": 2
         },
         "overrides": []
       },
@@ -233,23 +132,8 @@
       },
       "targets": [
         {
-          "groupBy": [],
-          "measurement": "cpu",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "type": "mean",
-                "params": [
-                  "usage_system"
-                ]
-              }
-            ]
-          ],
-          "tags": []
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"cpu\" and r._field == \"usage_system\")",
+          "refId": "A"
         }
       ],
       "options": {
@@ -260,7 +144,7 @@
       }
     },
     {
-      "id": 94180,
+      "id": 70827,
       "title": "Memory Usage",
       "type": "timeseries",
       "datasource": {
@@ -270,21 +154,7 @@
       "fieldConfig": {
         "defaults": {
           "unit": "percent",
-          "decimals": 2,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 90
-              }
-            ]
-          }
+          "decimals": 2
         },
         "overrides": []
       },
@@ -296,23 +166,8 @@
       },
       "targets": [
         {
-          "groupBy": [],
-          "measurement": "mem",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "type": "mean",
-                "params": [
-                  "used_percent"
-                ]
-              }
-            ]
-          ],
-          "tags": []
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"mem\" and r._field == \"used_percent\")",
+          "refId": "A"
         }
       ],
       "options": {
