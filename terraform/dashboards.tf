@@ -19,6 +19,20 @@ resource "grafana_dashboard" "Memory" {
   folder      = grafana_folder.Memory.id
 }
 
+resource "grafana_dashboard" "Disk" {
+  provider = grafana.cloud
+
+  config_json = file("${path.module}/dashboards/disk_metrics_dashboard.json")
+  folder      = grafana_folder.Disk.id
+}
+
+resource "grafana_dashboard" "Network" {
+  provider = grafana.cloud
+
+  config_json = file("${path.module}/dashboards/network_metrics_dashboard.json")
+  folder      = grafana_folder.Network.id
+}
+
 resource "grafana_dashboard" "Proxmox" {
   provider = grafana.cloud
 
