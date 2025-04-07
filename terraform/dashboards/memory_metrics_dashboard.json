@@ -1,6 +1,6 @@
 {
   "id": null,
-  "uid": "6ad18960",
+  "uid": "4b059005",
   "title": "Memory Metrics",
   "timezone": "browser",
   "schemaVersion": 36,
@@ -8,7 +8,7 @@
   "refresh": "10s",
   "panels": [
     {
-      "id": 29475,
+      "id": 33935,
       "title": "Total Memory Used",
       "type": "timeseries",
       "datasource": {
@@ -31,7 +31,7 @@
       "targets": [
         {
           "refId": "A",
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"mem\" and r._field == \"used\")\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> group()\n  |> sum()"
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"mem\" and r._field == \"used\")\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> group(columns: [\"_time\"])\n  |> sum()"
         }
       ],
       "options": {
@@ -42,7 +42,7 @@
       }
     },
     {
-      "id": 10471,
+      "id": 14958,
       "title": "Total Memory Cached",
       "type": "timeseries",
       "datasource": {
@@ -65,7 +65,7 @@
       "targets": [
         {
           "refId": "A",
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"mem\" and r._field == \"cached\")\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> group()\n  |> sum()"
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"mem\" and r._field == \"cached\")\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> group(columns: [\"_time\"])\n  |> sum()"
         }
       ],
       "options": {
@@ -76,7 +76,7 @@
       }
     },
     {
-      "id": 89210,
+      "id": 40240,
       "title": "Total Memory Available",
       "type": "timeseries",
       "datasource": {
@@ -99,7 +99,7 @@
       "targets": [
         {
           "refId": "A",
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"mem\" and r._field == \"available\")\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> group()\n  |> sum()"
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"mem\" and r._field == \"available\")\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> group(columns: [\"_time\"])\n  |> sum()"
         }
       ],
       "options": {

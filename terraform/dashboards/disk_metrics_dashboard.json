@@ -1,6 +1,6 @@
 {
   "id": null,
-  "uid": "d94a4ee9",
+  "uid": "bfb98706",
   "title": "Disk Metrics",
   "timezone": "browser",
   "schemaVersion": 36,
@@ -8,7 +8,7 @@
   "refresh": "10s",
   "panels": [
     {
-      "id": 49635,
+      "id": 8917,
       "title": "Total Disk Used",
       "type": "timeseries",
       "datasource": {
@@ -31,7 +31,7 @@
       "targets": [
         {
           "refId": "A",
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"disk\" and r._field == \"used\")\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> group()\n  |> sum()"
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"disk\" and r._field == \"used\")\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> group(columns: [\"_time\"])\n  |> sum()"
         }
       ],
       "options": {
@@ -42,7 +42,7 @@
       }
     },
     {
-      "id": 79785,
+      "id": 97900,
       "title": "Total Disk Free",
       "type": "timeseries",
       "datasource": {
@@ -65,7 +65,7 @@
       "targets": [
         {
           "refId": "A",
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"disk\" and r._field == \"free\")\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> group()\n  |> sum()"
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"disk\" and r._field == \"free\")\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> group(columns: [\"_time\"])\n  |> sum()"
         }
       ],
       "options": {
@@ -76,7 +76,7 @@
       }
     },
     {
-      "id": 72836,
+      "id": 79655,
       "title": "Total Disk Used Percent",
       "type": "timeseries",
       "datasource": {
@@ -99,7 +99,7 @@
       "targets": [
         {
           "refId": "A",
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"disk\" and r._field == \"used_percent\")\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> group()\n  |> sum()"
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"disk\" and r._field == \"used_percent\")\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> group(columns: [\"_time\"])\n  |> sum()"
         }
       ],
       "options": {
