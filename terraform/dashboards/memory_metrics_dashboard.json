@@ -1,6 +1,6 @@
 {
   "id": null,
-  "uid": "04d3aae9",
+  "uid": "6ad18960",
   "title": "Memory Metrics",
   "timezone": "browser",
   "schemaVersion": 36,
@@ -8,42 +8,8 @@
   "refresh": "10s",
   "panels": [
     {
-      "id": 42696,
-      "title": "Cluster Memory Utilization",
-      "type": "timeseries",
-      "datasource": {
-        "type": "influxdb",
-        "uid": "eehtcd6pg4pvka"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "unit": "percent",
-          "decimals": 2
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 6,
-        "x": 0,
-        "y": 0
-      },
-      "targets": [
-        {
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"mem\" and r._field == \"used_percent\")",
-          "refId": "A"
-        }
-      ],
-      "options": {
-        "legend": {
-          "displayMode": "table",
-          "placement": "bottom"
-        }
-      }
-    },
-    {
-      "id": 61887,
-      "title": "Node Memory Usage",
+      "id": 29475,
+      "title": "Total Memory Used",
       "type": "timeseries",
       "datasource": {
         "type": "influxdb",
@@ -58,14 +24,14 @@
       },
       "gridPos": {
         "h": 8,
-        "w": 6,
+        "w": 8,
         "x": 0,
         "y": 0
       },
       "targets": [
         {
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"mem\" and r._field == \"used\")",
-          "refId": "A"
+          "refId": "A",
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"mem\" and r._field == \"used\")\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> group()\n  |> sum()"
         }
       ],
       "options": {
@@ -76,8 +42,8 @@
       }
     },
     {
-      "id": 31131,
-      "title": "Pod Memory Usage",
+      "id": 10471,
+      "title": "Total Memory Cached",
       "type": "timeseries",
       "datasource": {
         "type": "influxdb",
@@ -92,14 +58,14 @@
       },
       "gridPos": {
         "h": 8,
-        "w": 6,
-        "x": 0,
+        "w": 8,
+        "x": 8,
         "y": 0
       },
       "targets": [
         {
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"mem\" and r._field == \"active\")",
-          "refId": "A"
+          "refId": "A",
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"mem\" and r._field == \"cached\")\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> group()\n  |> sum()"
         }
       ],
       "options": {
@@ -110,8 +76,8 @@
       }
     },
     {
-      "id": 49742,
-      "title": "Container Memory Usage",
+      "id": 89210,
+      "title": "Total Memory Available",
       "type": "timeseries",
       "datasource": {
         "type": "influxdb",
@@ -126,14 +92,14 @@
       },
       "gridPos": {
         "h": 8,
-        "w": 6,
-        "x": 0,
+        "w": 8,
+        "x": 16,
         "y": 0
       },
       "targets": [
         {
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"mem\" and r._field == \"cached\")",
-          "refId": "A"
+          "refId": "A",
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"mem\" and r._field == \"available\")\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> group()\n  |> sum()"
         }
       ],
       "options": {

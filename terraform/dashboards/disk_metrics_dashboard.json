@@ -1,6 +1,6 @@
 {
   "id": null,
-  "uid": "84578d24",
+  "uid": "d94a4ee9",
   "title": "Disk Metrics",
   "timezone": "browser",
   "schemaVersion": 36,
@@ -8,8 +8,76 @@
   "refresh": "10s",
   "panels": [
     {
-      "id": 18382,
-      "title": "Cluster Disk Usage",
+      "id": 49635,
+      "title": "Total Disk Used",
+      "type": "timeseries",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "eehtcd6pg4pvka"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bytes",
+          "decimals": 2
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 0,
+        "y": 0
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"disk\" and r._field == \"used\")\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> group()\n  |> sum()"
+        }
+      ],
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "bottom"
+        }
+      }
+    },
+    {
+      "id": 79785,
+      "title": "Total Disk Free",
+      "type": "timeseries",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "eehtcd6pg4pvka"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bytes",
+          "decimals": 2
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 8,
+        "y": 0
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"disk\" and r._field == \"free\")\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> group()\n  |> sum()"
+        }
+      ],
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "bottom"
+        }
+      }
+    },
+    {
+      "id": 72836,
+      "title": "Total Disk Used Percent",
       "type": "timeseries",
       "datasource": {
         "type": "influxdb",
@@ -24,116 +92,14 @@
       },
       "gridPos": {
         "h": 8,
-        "w": 6,
-        "x": 0,
+        "w": 8,
+        "x": 16,
         "y": 0
       },
       "targets": [
         {
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"disk\" and r._field == \"used_percent\")",
-          "refId": "A"
-        }
-      ],
-      "options": {
-        "legend": {
-          "displayMode": "table",
-          "placement": "bottom"
-        }
-      }
-    },
-    {
-      "id": 31188,
-      "title": "Node Disk Usage",
-      "type": "timeseries",
-      "datasource": {
-        "type": "influxdb",
-        "uid": "eehtcd6pg4pvka"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "unit": "bytes",
-          "decimals": 2
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 6,
-        "x": 0,
-        "y": 0
-      },
-      "targets": [
-        {
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"disk\" and r._field == \"used\")",
-          "refId": "A"
-        }
-      ],
-      "options": {
-        "legend": {
-          "displayMode": "table",
-          "placement": "bottom"
-        }
-      }
-    },
-    {
-      "id": 37475,
-      "title": "Pod Disk Usage",
-      "type": "timeseries",
-      "datasource": {
-        "type": "influxdb",
-        "uid": "eehtcd6pg4pvka"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "unit": "bytes",
-          "decimals": 2
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 6,
-        "x": 0,
-        "y": 0
-      },
-      "targets": [
-        {
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"disk\" and r._field == \"free\")",
-          "refId": "A"
-        }
-      ],
-      "options": {
-        "legend": {
-          "displayMode": "table",
-          "placement": "bottom"
-        }
-      }
-    },
-    {
-      "id": 42846,
-      "title": "Container Disk Usage",
-      "type": "timeseries",
-      "datasource": {
-        "type": "influxdb",
-        "uid": "eehtcd6pg4pvka"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "unit": "none",
-          "decimals": 2
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 6,
-        "x": 0,
-        "y": 0
-      },
-      "targets": [
-        {
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"disk\" and r._field == \"inodes_used\")",
-          "refId": "A"
+          "refId": "A",
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"disk\" and r._field == \"used_percent\")\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> group()\n  |> sum()"
         }
       ],
       "options": {

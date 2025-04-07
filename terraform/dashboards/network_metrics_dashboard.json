@@ -1,6 +1,6 @@
 {
   "id": null,
-  "uid": "0136131d",
+  "uid": "effb45dc",
   "title": "Network Metrics",
   "timezone": "browser",
   "schemaVersion": 36,
@@ -8,8 +8,8 @@
   "refresh": "10s",
   "panels": [
     {
-      "id": 91159,
-      "title": "Network Traffic In",
+      "id": 97348,
+      "title": "Total Network In",
       "type": "timeseries",
       "datasource": {
         "type": "influxdb",
@@ -24,14 +24,14 @@
       },
       "gridPos": {
         "h": 8,
-        "w": 6,
+        "w": 8,
         "x": 0,
         "y": 0
       },
       "targets": [
         {
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"net\" and r._field == \"bytes_recv\")",
-          "refId": "A"
+          "refId": "A",
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"net\" and r._field == \"bytes_recv\")\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> group()\n  |> sum()"
         }
       ],
       "options": {
@@ -42,8 +42,8 @@
       }
     },
     {
-      "id": 87386,
-      "title": "Network Traffic Out",
+      "id": 88131,
+      "title": "Total Network Out",
       "type": "timeseries",
       "datasource": {
         "type": "influxdb",
@@ -58,14 +58,14 @@
       },
       "gridPos": {
         "h": 8,
-        "w": 6,
-        "x": 0,
+        "w": 8,
+        "x": 8,
         "y": 0
       },
       "targets": [
         {
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"net\" and r._field == \"bytes_sent\")",
-          "refId": "A"
+          "refId": "A",
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"net\" and r._field == \"bytes_sent\")\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> group()\n  |> sum()"
         }
       ],
       "options": {
@@ -76,8 +76,8 @@
       }
     },
     {
-      "id": 14003,
-      "title": "Packets Received",
+      "id": 80032,
+      "title": "Total Packets Sent",
       "type": "timeseries",
       "datasource": {
         "type": "influxdb",
@@ -92,14 +92,14 @@
       },
       "gridPos": {
         "h": 8,
-        "w": 6,
-        "x": 0,
+        "w": 8,
+        "x": 16,
         "y": 0
       },
       "targets": [
         {
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"net\" and r._field == \"packets_recv\")",
-          "refId": "A"
+          "refId": "A",
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"net\" and r._field == \"packets_sent\")\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> group()\n  |> sum()"
         }
       ],
       "options": {
@@ -110,8 +110,8 @@
       }
     },
     {
-      "id": 88719,
-      "title": "Packets Sent",
+      "id": 99455,
+      "title": "Total Packets Received",
       "type": "timeseries",
       "datasource": {
         "type": "influxdb",
@@ -126,14 +126,14 @@
       },
       "gridPos": {
         "h": 8,
-        "w": 6,
+        "w": 8,
         "x": 0,
-        "y": 0
+        "y": 9
       },
       "targets": [
         {
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"net\" and r._field == \"packets_sent\")",
-          "refId": "A"
+          "refId": "A",
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"net\" and r._field == \"packets_recv\")\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> group()\n  |> sum()"
         }
       ],
       "options": {

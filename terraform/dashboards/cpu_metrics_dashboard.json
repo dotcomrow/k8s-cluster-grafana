@@ -1,6 +1,6 @@
 {
   "id": null,
-  "uid": "dbc8654c",
+  "uid": "09b2e3f8",
   "title": "CPU Metrics",
   "timezone": "browser",
   "schemaVersion": 36,
@@ -8,8 +8,8 @@
   "refresh": "10s",
   "panels": [
     {
-      "id": 82451,
-      "title": "Cluster CPU Utilization",
+      "id": 94611,
+      "title": "Total CPU Usage (System)",
       "type": "timeseries",
       "datasource": {
         "type": "influxdb",
@@ -24,14 +24,14 @@
       },
       "gridPos": {
         "h": 8,
-        "w": 6,
+        "w": 8,
         "x": 0,
         "y": 0
       },
       "targets": [
         {
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"cpu\" and r._field == \"usage_active\")",
-          "refId": "A"
+          "refId": "A",
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"cpu\" and r._field == \"usage_system\")\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> group()\n  |> sum()"
         }
       ],
       "options": {
@@ -42,8 +42,8 @@
       }
     },
     {
-      "id": 59042,
-      "title": "Node CPU Usage",
+      "id": 13865,
+      "title": "Total CPU Usage (User)",
       "type": "timeseries",
       "datasource": {
         "type": "influxdb",
@@ -58,14 +58,14 @@
       },
       "gridPos": {
         "h": 8,
-        "w": 6,
-        "x": 0,
+        "w": 8,
+        "x": 8,
         "y": 0
       },
       "targets": [
         {
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"cpu\" and r._field == \"usage_system\")",
-          "refId": "A"
+          "refId": "A",
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"cpu\" and r._field == \"usage_user\")\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> group()\n  |> sum()"
         }
       ],
       "options": {
@@ -76,8 +76,8 @@
       }
     },
     {
-      "id": 19069,
-      "title": "Pod CPU Usage",
+      "id": 53176,
+      "title": "Total CPU Usage (Active)",
       "type": "timeseries",
       "datasource": {
         "type": "influxdb",
@@ -92,48 +92,14 @@
       },
       "gridPos": {
         "h": 8,
-        "w": 6,
-        "x": 0,
+        "w": 8,
+        "x": 16,
         "y": 0
       },
       "targets": [
         {
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"cpu\" and r._field == \"usage_user\")",
-          "refId": "A"
-        }
-      ],
-      "options": {
-        "legend": {
-          "displayMode": "table",
-          "placement": "bottom"
-        }
-      }
-    },
-    {
-      "id": 23892,
-      "title": "Container CPU Usage",
-      "type": "timeseries",
-      "datasource": {
-        "type": "influxdb",
-        "uid": "eehtcd6pg4pvka"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "unit": "percent",
-          "decimals": 2
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 6,
-        "x": 0,
-        "y": 0
-      },
-      "targets": [
-        {
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"cpu\" and r._field == \"usage_guest\")",
-          "refId": "A"
+          "refId": "A",
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"cpu\" and r._field == \"usage_active\")\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> group()\n  |> sum()"
         }
       ],
       "options": {
