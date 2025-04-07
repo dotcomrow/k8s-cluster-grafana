@@ -1,6 +1,6 @@
 {
   "id": null,
-  "uid": "8984d9fa",
+  "uid": "64a82254",
   "title": "PFSense Metrics",
   "timezone": "browser",
   "schemaVersion": 36,
@@ -8,8 +8,8 @@
   "refresh": "10s",
   "panels": [
     {
-      "id": 87585,
-      "title": "Load 1m",
+      "id": 48081,
+      "title": "Memory Used",
       "type": "timeseries",
       "datasource": {
         "type": "influxdb",
@@ -17,7 +17,7 @@
       },
       "fieldConfig": {
         "defaults": {
-          "unit": "none",
+          "unit": "bytes",
           "decimals": 2
         },
         "overrides": []
@@ -30,8 +30,8 @@
       },
       "targets": [
         {
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"system\" and r._field == \"load1\" and r.host == \"pfsense\")",
-          "refId": "A"
+          "refId": "A",
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"system\" and r._field == \"mem_used\" and r.host == \"pfsense\")\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> yield(name: \"mean\")"
         }
       ],
       "options": {
@@ -42,8 +42,8 @@
       }
     },
     {
-      "id": 89097,
-      "title": "Memory Used",
+      "id": 64207,
+      "title": "Swap Used",
       "type": "timeseries",
       "datasource": {
         "type": "influxdb",
@@ -64,8 +64,8 @@
       },
       "targets": [
         {
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"system\" and r._field == \"mem_used\" and r.host == \"pfsense\")",
-          "refId": "A"
+          "refId": "A",
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"system\" and r._field == \"swap_used\" and r.host == \"pfsense\")\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> yield(name: \"mean\")"
         }
       ],
       "options": {
@@ -76,8 +76,8 @@
       }
     },
     {
-      "id": 67850,
-      "title": "Swap Used",
+      "id": 85929,
+      "title": "Disk Free",
       "type": "timeseries",
       "datasource": {
         "type": "influxdb",
@@ -98,8 +98,8 @@
       },
       "targets": [
         {
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"system\" and r._field == \"swap_used\" and r.host == \"pfsense\")",
-          "refId": "A"
+          "refId": "A",
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"system\" and r._field == \"disk_free\" and r.host == \"pfsense\")\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> yield(name: \"mean\")"
         }
       ],
       "options": {
@@ -110,41 +110,7 @@
       }
     },
     {
-      "id": 9357,
-      "title": "Disk Free",
-      "type": "timeseries",
-      "datasource": {
-        "type": "influxdb",
-        "uid": "eehtcd6pg4pvka"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "unit": "bytes",
-          "decimals": 2
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 8,
-        "x": 0,
-        "y": 9
-      },
-      "targets": [
-        {
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"system\" and r._field == \"disk_free\" and r.host == \"pfsense\")",
-          "refId": "A"
-        }
-      ],
-      "options": {
-        "legend": {
-          "displayMode": "table",
-          "placement": "bottom"
-        }
-      }
-    },
-    {
-      "id": 73161,
+      "id": 80618,
       "title": "Uptime",
       "type": "timeseries",
       "datasource": {
@@ -161,13 +127,13 @@
       "gridPos": {
         "h": 8,
         "w": 8,
-        "x": 8,
+        "x": 0,
         "y": 9
       },
       "targets": [
         {
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"system\" and r._field == \"uptime\" and r.host == \"pfsense\")",
-          "refId": "A"
+          "refId": "A",
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"system\" and r._field == \"uptime\" and r.host == \"pfsense\")\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> yield(name: \"mean\")"
         }
       ],
       "options": {
