@@ -1,0 +1,1489 @@
+[
+{
+  "measurement": "_value",
+  "fields": [
+    {
+      "key": "table",
+      "type": "_value"
+    }
+  ],
+  "tags": [
+    "table",
+    "0",
+    "0",
+    "0",
+    "0"
+  ]
+}
+,
+{
+  "measurement": "ballooninfo",
+  "fields": [
+    {
+      "key": "table",
+      "type": "_value"
+    },
+    {
+      "key": "0",
+      "type": "actual"
+    },
+    {
+      "key": "0",
+      "type": "max_mem"
+    }
+  ],
+  "tags": [
+    "table",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+  ]
+}
+,
+{
+  "measurement": "blockstat",
+  "fields": [
+    {
+      "key": "table",
+      "type": "_value"
+    },
+    {
+      "key": "0",
+      "type": "bavail"
+    },
+    {
+      "key": "0",
+      "type": "bfree"
+    },
+    {
+      "key": "0",
+      "type": "blocks"
+    },
+    {
+      "key": "0",
+      "type": "failed_flush_operations"
+    },
+    {
+      "key": "0",
+      "type": "failed_rd_operations"
+    },
+    {
+      "key": "0",
+      "type": "failed_unmap_operations"
+    },
+    {
+      "key": "0",
+      "type": "failed_wr_operations"
+    },
+    {
+      "key": "0",
+      "type": "failed_zone_append_operations"
+    },
+    {
+      "key": "0",
+      "type": "favail"
+    },
+    {
+      "key": "0",
+      "type": "ffree"
+    },
+    {
+      "key": "0",
+      "type": "files"
+    },
+    {
+      "key": "0",
+      "type": "flush_operations"
+    },
+    {
+      "key": "0",
+      "type": "flush_total_time_ns"
+    },
+    {
+      "key": "0",
+      "type": "fper"
+    },
+    {
+      "key": "0",
+      "type": "fused"
+    },
+    {
+      "key": "0",
+      "type": "idle_time_ns"
+    },
+    {
+      "key": "0",
+      "type": "invalid_flush_operations"
+    },
+    {
+      "key": "0",
+      "type": "invalid_rd_operations"
+    },
+    {
+      "key": "0",
+      "type": "invalid_unmap_operations"
+    },
+    {
+      "key": "0",
+      "type": "invalid_wr_operations"
+    },
+    {
+      "key": "0",
+      "type": "invalid_zone_append_operations"
+    },
+    {
+      "key": "0",
+      "type": "per"
+    },
+    {
+      "key": "0",
+      "type": "rd_bytes"
+    },
+    {
+      "key": "0",
+      "type": "rd_merged"
+    },
+    {
+      "key": "0",
+      "type": "rd_operations"
+    },
+    {
+      "key": "0",
+      "type": "rd_total_time_ns"
+    },
+    {
+      "key": "0",
+      "type": "su_bavail"
+    },
+    {
+      "key": "0",
+      "type": "su_blocks"
+    },
+    {
+      "key": "0",
+      "type": "su_favail"
+    },
+    {
+      "key": "0",
+      "type": "su_files"
+    },
+    {
+      "key": "0",
+      "type": "unmap_bytes"
+    },
+    {
+      "key": "0",
+      "type": "unmap_merged"
+    },
+    {
+      "key": "0",
+      "type": "unmap_operations"
+    },
+    {
+      "key": "0",
+      "type": "unmap_total_time_ns"
+    },
+    {
+      "key": "0",
+      "type": "used"
+    },
+    {
+      "key": "0",
+      "type": "user_bavail"
+    },
+    {
+      "key": "0",
+      "type": "user_blocks"
+    },
+    {
+      "key": "0",
+      "type": "user_favail"
+    },
+    {
+      "key": "0",
+      "type": "user_files"
+    },
+    {
+      "key": "0",
+      "type": "user_fused"
+    },
+    {
+      "key": "0",
+      "type": "user_used"
+    },
+    {
+      "key": "0",
+      "type": "wr_bytes"
+    },
+    {
+      "key": "0",
+      "type": "wr_highest_offset"
+    },
+    {
+      "key": "0",
+      "type": "wr_merged"
+    },
+    {
+      "key": "0",
+      "type": "wr_operations"
+    },
+    {
+      "key": "0",
+      "type": "wr_total_time_ns"
+    },
+    {
+      "key": "0",
+      "type": "zone_append_bytes"
+    },
+    {
+      "key": "0",
+      "type": "zone_append_merged"
+    },
+    {
+      "key": "0",
+      "type": "zone_append_operations"
+    },
+    {
+      "key": "0",
+      "type": "zone_append_total_time_ns"
+    }
+  ],
+  "tags": [
+    "table",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+  ]
+}
+,
+{
+  "measurement": "cpu",
+  "fields": [
+    {
+      "key": "table",
+      "type": "_value"
+    },
+    {
+      "key": "0",
+      "type": "usage_active"
+    },
+    {
+      "key": "0",
+      "type": "usage_guest"
+    },
+    {
+      "key": "0",
+      "type": "usage_guest_nice"
+    },
+    {
+      "key": "0",
+      "type": "usage_idle"
+    },
+    {
+      "key": "0",
+      "type": "usage_iowait"
+    },
+    {
+      "key": "0",
+      "type": "usage_irq"
+    },
+    {
+      "key": "0",
+      "type": "usage_nice"
+    },
+    {
+      "key": "0",
+      "type": "usage_softirq"
+    },
+    {
+      "key": "0",
+      "type": "usage_steal"
+    },
+    {
+      "key": "0",
+      "type": "usage_system"
+    },
+    {
+      "key": "0",
+      "type": "usage_user"
+    }
+  ],
+  "tags": [
+    "table",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+  ]
+}
+,
+{
+  "measurement": "cpustat",
+  "fields": [
+    {
+      "key": "table",
+      "type": "_value"
+    },
+    {
+      "key": "0",
+      "type": "avg1"
+    },
+    {
+      "key": "0",
+      "type": "avg15"
+    },
+    {
+      "key": "0",
+      "type": "avg5"
+    },
+    {
+      "key": "0",
+      "type": "cpu"
+    },
+    {
+      "key": "0",
+      "type": "cpus"
+    },
+    {
+      "key": "0",
+      "type": "ctime"
+    },
+    {
+      "key": "0",
+      "type": "guest"
+    },
+    {
+      "key": "0",
+      "type": "guest_nice"
+    },
+    {
+      "key": "0",
+      "type": "idle"
+    },
+    {
+      "key": "0",
+      "type": "iowait"
+    },
+    {
+      "key": "0",
+      "type": "irq"
+    },
+    {
+      "key": "0",
+      "type": "nice"
+    },
+    {
+      "key": "0",
+      "type": "softirq"
+    },
+    {
+      "key": "0",
+      "type": "steal"
+    },
+    {
+      "key": "0",
+      "type": "sum"
+    },
+    {
+      "key": "0",
+      "type": "system"
+    },
+    {
+      "key": "0",
+      "type": "total"
+    },
+    {
+      "key": "0",
+      "type": "used"
+    },
+    {
+      "key": "0",
+      "type": "user"
+    },
+    {
+      "key": "0",
+      "type": "wait"
+    }
+  ],
+  "tags": [
+    "table",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+  ]
+}
+,
+{
+  "measurement": "disk",
+  "fields": [
+    {
+      "key": "table",
+      "type": "_value"
+    },
+    {
+      "key": "0",
+      "type": "free"
+    },
+    {
+      "key": "0",
+      "type": "inodes_free"
+    },
+    {
+      "key": "0",
+      "type": "inodes_total"
+    },
+    {
+      "key": "0",
+      "type": "inodes_used"
+    },
+    {
+      "key": "0",
+      "type": "inodes_used_percent"
+    },
+    {
+      "key": "0",
+      "type": "total"
+    },
+    {
+      "key": "0",
+      "type": "used"
+    },
+    {
+      "key": "0",
+      "type": "used_percent"
+    }
+  ],
+  "tags": [
+    "table",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+  ]
+}
+,
+{
+  "measurement": "diskio",
+  "fields": [
+    {
+      "key": "table",
+      "type": "_value"
+    },
+    {
+      "key": "0",
+      "type": "io_await"
+    },
+    {
+      "key": "0",
+      "type": "io_svctm"
+    },
+    {
+      "key": "0",
+      "type": "io_time"
+    },
+    {
+      "key": "0",
+      "type": "io_util"
+    },
+    {
+      "key": "0",
+      "type": "iops_in_progress"
+    },
+    {
+      "key": "0",
+      "type": "merged_reads"
+    },
+    {
+      "key": "0",
+      "type": "merged_writes"
+    },
+    {
+      "key": "0",
+      "type": "read_bytes"
+    },
+    {
+      "key": "0",
+      "type": "read_time"
+    },
+    {
+      "key": "0",
+      "type": "reads"
+    },
+    {
+      "key": "0",
+      "type": "weighted_io_time"
+    },
+    {
+      "key": "0",
+      "type": "write_bytes"
+    },
+    {
+      "key": "0",
+      "type": "write_time"
+    },
+    {
+      "key": "0",
+      "type": "writes"
+    }
+  ],
+  "tags": [
+    "table",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+  ]
+}
+,
+{
+  "measurement": "mem",
+  "fields": [
+    {
+      "key": "table",
+      "type": "_value"
+    },
+    {
+      "key": "0",
+      "type": "active"
+    },
+    {
+      "key": "0",
+      "type": "available"
+    },
+    {
+      "key": "0",
+      "type": "available_percent"
+    },
+    {
+      "key": "0",
+      "type": "buffered"
+    },
+    {
+      "key": "0",
+      "type": "cached"
+    },
+    {
+      "key": "0",
+      "type": "commit_limit"
+    },
+    {
+      "key": "0",
+      "type": "committed_as"
+    },
+    {
+      "key": "0",
+      "type": "dirty"
+    },
+    {
+      "key": "0",
+      "type": "free"
+    },
+    {
+      "key": "0",
+      "type": "high_free"
+    },
+    {
+      "key": "0",
+      "type": "high_total"
+    },
+    {
+      "key": "0",
+      "type": "huge_page_size"
+    },
+    {
+      "key": "0",
+      "type": "huge_pages_free"
+    },
+    {
+      "key": "0",
+      "type": "huge_pages_total"
+    },
+    {
+      "key": "0",
+      "type": "inactive"
+    },
+    {
+      "key": "0",
+      "type": "low_free"
+    },
+    {
+      "key": "0",
+      "type": "low_total"
+    },
+    {
+      "key": "0",
+      "type": "mapped"
+    },
+    {
+      "key": "0",
+      "type": "page_tables"
+    },
+    {
+      "key": "0",
+      "type": "shared"
+    },
+    {
+      "key": "0",
+      "type": "slab"
+    },
+    {
+      "key": "0",
+      "type": "sreclaimable"
+    },
+    {
+      "key": "0",
+      "type": "sunreclaim"
+    },
+    {
+      "key": "0",
+      "type": "swap_cached"
+    },
+    {
+      "key": "0",
+      "type": "swap_free"
+    },
+    {
+      "key": "0",
+      "type": "swap_total"
+    },
+    {
+      "key": "0",
+      "type": "total"
+    },
+    {
+      "key": "0",
+      "type": "used"
+    },
+    {
+      "key": "0",
+      "type": "used_percent"
+    },
+    {
+      "key": "0",
+      "type": "vmalloc_chunk"
+    },
+    {
+      "key": "0",
+      "type": "vmalloc_total"
+    },
+    {
+      "key": "0",
+      "type": "vmalloc_used"
+    },
+    {
+      "key": "0",
+      "type": "write_back"
+    },
+    {
+      "key": "0",
+      "type": "write_back_tmp"
+    }
+  ],
+  "tags": [
+    "table",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+  ]
+}
+,
+{
+  "measurement": "memory",
+  "fields": [
+    {
+      "key": "table",
+      "type": "_value"
+    },
+    {
+      "key": "0",
+      "type": "arcsize"
+    },
+    {
+      "key": "0",
+      "type": "memfree"
+    },
+    {
+      "key": "0",
+      "type": "memshared"
+    },
+    {
+      "key": "0",
+      "type": "memtotal"
+    },
+    {
+      "key": "0",
+      "type": "memused"
+    },
+    {
+      "key": "0",
+      "type": "swapfree"
+    },
+    {
+      "key": "0",
+      "type": "swaptotal"
+    },
+    {
+      "key": "0",
+      "type": "swapused"
+    }
+  ],
+  "tags": [
+    "table",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+  ]
+}
+,
+{
+  "measurement": "net",
+  "fields": [
+    {
+      "key": "table",
+      "type": "_value"
+    },
+    {
+      "key": "0",
+      "type": "bytes_recv"
+    },
+    {
+      "key": "0",
+      "type": "bytes_sent"
+    },
+    {
+      "key": "0",
+      "type": "drop_in"
+    },
+    {
+      "key": "0",
+      "type": "drop_out"
+    },
+    {
+      "key": "0",
+      "type": "err_in"
+    },
+    {
+      "key": "0",
+      "type": "err_out"
+    },
+    {
+      "key": "0",
+      "type": "icmp_inaddrmaskreps"
+    },
+    {
+      "key": "0",
+      "type": "icmp_inaddrmasks"
+    },
+    {
+      "key": "0",
+      "type": "icmp_incsumerrors"
+    },
+    {
+      "key": "0",
+      "type": "icmp_indestunreachs"
+    },
+    {
+      "key": "0",
+      "type": "icmp_inechoreps"
+    },
+    {
+      "key": "0",
+      "type": "icmp_inechos"
+    },
+    {
+      "key": "0",
+      "type": "icmp_inerrors"
+    },
+    {
+      "key": "0",
+      "type": "icmp_inmsgs"
+    },
+    {
+      "key": "0",
+      "type": "icmp_inparmprobs"
+    },
+    {
+      "key": "0",
+      "type": "icmp_inredirects"
+    },
+    {
+      "key": "0",
+      "type": "icmp_insrcquenchs"
+    },
+    {
+      "key": "0",
+      "type": "icmp_intimeexcds"
+    },
+    {
+      "key": "0",
+      "type": "icmp_intimestampreps"
+    },
+    {
+      "key": "0",
+      "type": "icmp_intimestamps"
+    },
+    {
+      "key": "0",
+      "type": "icmp_outaddrmaskreps"
+    },
+    {
+      "key": "0",
+      "type": "icmp_outaddrmasks"
+    },
+    {
+      "key": "0",
+      "type": "icmp_outdestunreachs"
+    },
+    {
+      "key": "0",
+      "type": "icmp_outechoreps"
+    },
+    {
+      "key": "0",
+      "type": "icmp_outechos"
+    },
+    {
+      "key": "0",
+      "type": "icmp_outerrors"
+    },
+    {
+      "key": "0",
+      "type": "icmp_outmsgs"
+    },
+    {
+      "key": "0",
+      "type": "icmp_outparmprobs"
+    },
+    {
+      "key": "0",
+      "type": "icmp_outratelimitglobal"
+    },
+    {
+      "key": "0",
+      "type": "icmp_outratelimithost"
+    },
+    {
+      "key": "0",
+      "type": "icmp_outredirects"
+    },
+    {
+      "key": "0",
+      "type": "icmp_outsrcquenchs"
+    },
+    {
+      "key": "0",
+      "type": "icmp_outtimeexcds"
+    },
+    {
+      "key": "0",
+      "type": "icmp_outtimestampreps"
+    },
+    {
+      "key": "0",
+      "type": "icmp_outtimestamps"
+    },
+    {
+      "key": "0",
+      "type": "icmpmsg_intype0"
+    },
+    {
+      "key": "0",
+      "type": "icmpmsg_intype3"
+    },
+    {
+      "key": "0",
+      "type": "icmpmsg_outtype3"
+    },
+    {
+      "key": "0",
+      "type": "icmpmsg_outtype8"
+    },
+    {
+      "key": "0",
+      "type": "ip_defaultttl"
+    },
+    {
+      "key": "0",
+      "type": "ip_forwarding"
+    },
+    {
+      "key": "0",
+      "type": "ip_forwdatagrams"
+    },
+    {
+      "key": "0",
+      "type": "ip_fragcreates"
+    },
+    {
+      "key": "0",
+      "type": "ip_fragfails"
+    },
+    {
+      "key": "0",
+      "type": "ip_fragoks"
+    },
+    {
+      "key": "0",
+      "type": "ip_inaddrerrors"
+    },
+    {
+      "key": "0",
+      "type": "ip_indelivers"
+    },
+    {
+      "key": "0",
+      "type": "ip_indiscards"
+    },
+    {
+      "key": "0",
+      "type": "ip_inhdrerrors"
+    },
+    {
+      "key": "0",
+      "type": "ip_inreceives"
+    },
+    {
+      "key": "0",
+      "type": "ip_inunknownprotos"
+    },
+    {
+      "key": "0",
+      "type": "ip_outdiscards"
+    },
+    {
+      "key": "0",
+      "type": "ip_outnoroutes"
+    },
+    {
+      "key": "0",
+      "type": "ip_outrequests"
+    },
+    {
+      "key": "0",
+      "type": "ip_outtransmits"
+    },
+    {
+      "key": "0",
+      "type": "ip_reasmfails"
+    },
+    {
+      "key": "0",
+      "type": "ip_reasmoks"
+    },
+    {
+      "key": "0",
+      "type": "ip_reasmreqds"
+    },
+    {
+      "key": "0",
+      "type": "ip_reasmtimeout"
+    },
+    {
+      "key": "0",
+      "type": "packets_recv"
+    },
+    {
+      "key": "0",
+      "type": "packets_sent"
+    },
+    {
+      "key": "0",
+      "type": "speed"
+    },
+    {
+      "key": "0",
+      "type": "tcp_activeopens"
+    },
+    {
+      "key": "0",
+      "type": "tcp_attemptfails"
+    },
+    {
+      "key": "0",
+      "type": "tcp_currestab"
+    },
+    {
+      "key": "0",
+      "type": "tcp_estabresets"
+    },
+    {
+      "key": "0",
+      "type": "tcp_incsumerrors"
+    },
+    {
+      "key": "0",
+      "type": "tcp_inerrs"
+    },
+    {
+      "key": "0",
+      "type": "tcp_insegs"
+    },
+    {
+      "key": "0",
+      "type": "tcp_maxconn"
+    },
+    {
+      "key": "0",
+      "type": "tcp_outrsts"
+    },
+    {
+      "key": "0",
+      "type": "tcp_outsegs"
+    },
+    {
+      "key": "0",
+      "type": "tcp_passiveopens"
+    },
+    {
+      "key": "0",
+      "type": "tcp_retranssegs"
+    },
+    {
+      "key": "0",
+      "type": "tcp_rtoalgorithm"
+    },
+    {
+      "key": "0",
+      "type": "tcp_rtomax"
+    },
+    {
+      "key": "0",
+      "type": "tcp_rtomin"
+    },
+    {
+      "key": "0",
+      "type": "udp_ignoredmulti"
+    },
+    {
+      "key": "0",
+      "type": "udp_incsumerrors"
+    },
+    {
+      "key": "0",
+      "type": "udp_indatagrams"
+    },
+    {
+      "key": "0",
+      "type": "udp_inerrors"
+    },
+    {
+      "key": "0",
+      "type": "udp_memerrors"
+    },
+    {
+      "key": "0",
+      "type": "udp_noports"
+    },
+    {
+      "key": "0",
+      "type": "udp_outdatagrams"
+    },
+    {
+      "key": "0",
+      "type": "udp_rcvbuferrors"
+    },
+    {
+      "key": "0",
+      "type": "udp_sndbuferrors"
+    },
+    {
+      "key": "0",
+      "type": "udplite_ignoredmulti"
+    },
+    {
+      "key": "0",
+      "type": "udplite_incsumerrors"
+    },
+    {
+      "key": "0",
+      "type": "udplite_indatagrams"
+    },
+    {
+      "key": "0",
+      "type": "udplite_inerrors"
+    },
+    {
+      "key": "0",
+      "type": "udplite_memerrors"
+    },
+    {
+      "key": "0",
+      "type": "udplite_noports"
+    },
+    {
+      "key": "0",
+      "type": "udplite_outdatagrams"
+    },
+    {
+      "key": "0",
+      "type": "udplite_rcvbuferrors"
+    },
+    {
+      "key": "0",
+      "type": "udplite_sndbuferrors"
+    }
+  ],
+  "tags": [
+    "table",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+  ]
+}
+,
+{
+  "measurement": "nics",
+  "fields": [
+    {
+      "key": "table",
+      "type": "_value"
+    },
+    {
+      "key": "0",
+      "type": "netin"
+    },
+    {
+      "key": "0",
+      "type": "netout"
+    },
+    {
+      "key": "0",
+      "type": "receive"
+    },
+    {
+      "key": "0",
+      "type": "transmit"
+    }
+  ],
+  "tags": [
+    "table",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+  ]
+}
+,
+{
+  "measurement": "processes",
+  "fields": [
+    {
+      "key": "table",
+      "type": "_value"
+    },
+    {
+      "key": "0",
+      "type": "blocked"
+    },
+    {
+      "key": "0",
+      "type": "dead"
+    },
+    {
+      "key": "0",
+      "type": "idle"
+    },
+    {
+      "key": "0",
+      "type": "paging"
+    },
+    {
+      "key": "0",
+      "type": "running"
+    },
+    {
+      "key": "0",
+      "type": "sleeping"
+    },
+    {
+      "key": "0",
+      "type": "stopped"
+    },
+    {
+      "key": "0",
+      "type": "total"
+    },
+    {
+      "key": "0",
+      "type": "total_threads"
+    },
+    {
+      "key": "0",
+      "type": "unknown"
+    },
+    {
+      "key": "0",
+      "type": "zombies"
+    }
+  ],
+  "tags": [
+    "table",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+  ]
+}
+,
+{
+  "measurement": "proxmox-support",
+  "fields": [
+    {
+      "key": "table",
+      "type": "_value"
+    },
+    {
+      "key": "0",
+      "type": "pbs-library-version"
+    }
+  ],
+  "tags": [
+    "table",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+  ]
+}
+,
+{
+  "measurement": "sensors",
+  "fields": [
+    {
+      "key": "table",
+      "type": "_value"
+    },
+    {
+      "key": "0",
+      "type": "temp_crit"
+    },
+    {
+      "key": "0",
+      "type": "temp_crit_alarm"
+    },
+    {
+      "key": "0",
+      "type": "temp_input"
+    },
+    {
+      "key": "0",
+      "type": "temp_max"
+    }
+  ],
+  "tags": [
+    "table",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+  ]
+}
+,
+{
+  "measurement": "swap",
+  "fields": [
+    {
+      "key": "table",
+      "type": "_value"
+    },
+    {
+      "key": "0",
+      "type": "free"
+    },
+    {
+      "key": "0",
+      "type": "in"
+    },
+    {
+      "key": "0",
+      "type": "out"
+    },
+    {
+      "key": "0",
+      "type": "total"
+    },
+    {
+      "key": "0",
+      "type": "used"
+    },
+    {
+      "key": "0",
+      "type": "used_percent"
+    }
+  ],
+  "tags": [
+    "table",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+  ]
+}
+,
+{
+  "measurement": "system",
+  "fields": [
+    {
+      "key": "table",
+      "type": "_value"
+    },
+    {
+      "key": "0",
+      "type": "balloon"
+    },
+    {
+      "key": "0",
+      "type": "cpu"
+    },
+    {
+      "key": "0",
+      "type": "cpus"
+    },
+    {
+      "key": "0",
+      "type": "disk"
+    },
+    {
+      "key": "0",
+      "type": "diskread"
+    },
+    {
+      "key": "0",
+      "type": "diskwrite"
+    },
+    {
+      "key": "0",
+      "type": "load1"
+    },
+    {
+      "key": "0",
+      "type": "load15"
+    },
+    {
+      "key": "0",
+      "type": "load5"
+    },
+    {
+      "key": "0",
+      "type": "maxdisk"
+    },
+    {
+      "key": "0",
+      "type": "maxmem"
+    },
+    {
+      "key": "0",
+      "type": "mem"
+    },
+    {
+      "key": "0",
+      "type": "n_cpus"
+    },
+    {
+      "key": "0",
+      "type": "n_unique_users"
+    },
+    {
+      "key": "0",
+      "type": "n_users"
+    },
+    {
+      "key": "0",
+      "type": "name"
+    },
+    {
+      "key": "0",
+      "type": "netin"
+    },
+    {
+      "key": "0",
+      "type": "netout"
+    },
+    {
+      "key": "0",
+      "type": "pid"
+    },
+    {
+      "key": "0",
+      "type": "qmpstatus"
+    },
+    {
+      "key": "0",
+      "type": "running-machine"
+    },
+    {
+      "key": "0",
+      "type": "running-qemu"
+    },
+    {
+      "key": "0",
+      "type": "status"
+    },
+    {
+      "key": "0",
+      "type": "uptime"
+    },
+    {
+      "key": "0",
+      "type": "uptime_format"
+    }
+  ],
+  "tags": [
+    "table",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+  ]
+}
+]
