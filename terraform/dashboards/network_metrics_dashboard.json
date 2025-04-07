@@ -11,7 +11,10 @@
       "id": 13657,
       "title": "Node Network Traffic In",
       "type": "timeseries",
-      "datasource": "InfluxDB",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "eehtcd6pg4pvka"
+      },
       "fieldConfig": {
         "defaults": {
           "unit": "Bps",
@@ -71,7 +74,10 @@
       "id": 99857,
       "title": "Node Network Traffic Out",
       "type": "timeseries",
-      "datasource": "InfluxDB",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "eehtcd6pg4pvka"
+      },
       "fieldConfig": {
         "defaults": {
           "unit": "Bps",
@@ -131,7 +137,10 @@
       "id": 11063,
       "title": "Packets Received",
       "type": "timeseries",
-      "datasource": "InfluxDB",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "eehtcd6pg4pvka"
+      },
       "fieldConfig": {
         "defaults": {
           "unit": "pps",
@@ -191,7 +200,10 @@
       "id": 85353,
       "title": "Packets Sent",
       "type": "timeseries",
-      "datasource": "InfluxDB",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "eehtcd6pg4pvka"
+      },
       "fieldConfig": {
         "defaults": {
           "unit": "pps",

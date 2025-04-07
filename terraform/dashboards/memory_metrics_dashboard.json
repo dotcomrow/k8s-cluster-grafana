@@ -11,7 +11,10 @@
       "id": 27307,
       "title": "Cluster Memory Utilization",
       "type": "timeseries",
-      "datasource": "InfluxDB",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "eehtcd6pg4pvka"
+      },
       "fieldConfig": {
         "defaults": {
           "unit": "percent",
@@ -71,7 +74,10 @@
       "id": 79228,
       "title": "Node Memory Usage",
       "type": "timeseries",
-      "datasource": "InfluxDB",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "eehtcd6pg4pvka"
+      },
       "fieldConfig": {
         "defaults": {
           "unit": "bytes",
@@ -131,7 +137,10 @@
       "id": 39833,
       "title": "Pod Memory Usage",
       "type": "timeseries",
-      "datasource": "InfluxDB",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "eehtcd6pg4pvka"
+      },
       "fieldConfig": {
         "defaults": {
           "unit": "bytes",
@@ -191,7 +200,10 @@
       "id": 19076,
       "title": "Container Memory Usage",
       "type": "timeseries",
-      "datasource": "InfluxDB",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "eehtcd6pg4pvka"
+      },
       "fieldConfig": {
         "defaults": {
           "unit": "bytes",

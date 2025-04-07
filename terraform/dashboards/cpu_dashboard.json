@@ -11,7 +11,10 @@
       "id": 1870,
       "title": "Cluster CPU Utilization",
       "type": "timeseries",
-      "datasource": "InfluxDB",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "eehtcd6pg4pvka"
+      },
       "fieldConfig": {
         "defaults": {
           "unit": "percent",
@@ -71,7 +74,10 @@
       "id": 34044,
       "title": "Node CPU Usage",
       "type": "timeseries",
-      "datasource": "InfluxDB",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "eehtcd6pg4pvka"
+      },
       "fieldConfig": {
         "defaults": {
           "unit": "percent",
@@ -131,7 +137,10 @@
       "id": 79628,
       "title": "Pod CPU Usage",
       "type": "timeseries",
-      "datasource": "InfluxDB",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "eehtcd6pg4pvka"
+      },
       "fieldConfig": {
         "defaults": {
           "unit": "percent",
@@ -191,7 +200,10 @@
       "id": 49770,
       "title": "Container CPU Usage",
       "type": "timeseries",
-      "datasource": "InfluxDB",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "eehtcd6pg4pvka"
+      },
       "fieldConfig": {
         "defaults": {
           "unit": "percent",

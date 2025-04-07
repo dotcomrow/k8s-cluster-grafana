@@ -11,7 +11,10 @@
       "id": 95352,
       "title": "Cluster Disk Usage",
       "type": "timeseries",
-      "datasource": "InfluxDB",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "eehtcd6pg4pvka"
+      },
       "fieldConfig": {
         "defaults": {
           "unit": "percent",
@@ -71,7 +74,10 @@
       "id": 26333,
       "title": "Node Disk Usage",
       "type": "timeseries",
-      "datasource": "InfluxDB",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "eehtcd6pg4pvka"
+      },
       "fieldConfig": {
         "defaults": {
           "unit": "bytes",
@@ -131,7 +137,10 @@
       "id": 5022,
       "title": "Pod Disk Usage",
       "type": "timeseries",
-      "datasource": "InfluxDB",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "eehtcd6pg4pvka"
+      },
       "fieldConfig": {
         "defaults": {
           "unit": "bytes",
@@ -191,7 +200,10 @@
       "id": 15196,
       "title": "Container Disk Usage",
       "type": "timeseries",
-      "datasource": "InfluxDB",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "eehtcd6pg4pvka"
+      },
       "fieldConfig": {
         "defaults": {
           "unit": "none",

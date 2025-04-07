@@ -11,7 +11,10 @@
       "id": 35593,
       "title": "Cluster Status - Load",
       "type": "timeseries",
-      "datasource": "InfluxDB",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "eehtcd6pg4pvka"
+      },
       "fieldConfig": {
         "defaults": {
           "unit": "none",
@@ -71,7 +74,10 @@
       "id": 44693,
       "title": "Node CPU Usage",
       "type": "timeseries",
-      "datasource": "InfluxDB",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "eehtcd6pg4pvka"
+      },
       "fieldConfig": {
         "defaults": {
           "unit": "percent",
@@ -131,7 +137,10 @@
       "id": 81625,
       "title": "Node Memory Usage",
       "type": "timeseries",
-      "datasource": "InfluxDB",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "eehtcd6pg4pvka"
+      },
       "fieldConfig": {
         "defaults": {
           "unit": "percent",
@@ -191,7 +200,10 @@
       "id": 49256,
       "title": "Node Disk Usage",
       "type": "timeseries",
-      "datasource": "InfluxDB",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "eehtcd6pg4pvka"
+      },
       "fieldConfig": {
         "defaults": {
           "unit": "percent",

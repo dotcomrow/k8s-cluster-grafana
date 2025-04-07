@@ -13,7 +13,7 @@
       "type": "timeseries",
       "datasource": {
         "type": "prometheus",
-        "uid": "PROMETHEUS_DS"
+        "uid": "grafanacloud-prom"
       },
       "fieldConfig": {
         "defaults": {
@@ -63,7 +63,7 @@
       "type": "timeseries",
       "datasource": {
         "type": "prometheus",
-        "uid": "PROMETHEUS_DS"
+        "uid": "grafanacloud-prom"
       },
       "fieldConfig": {
         "defaults": {
@@ -113,7 +113,7 @@
       "type": "timeseries",
       "datasource": {
         "type": "prometheus",
-        "uid": "PROMETHEUS_DS"
+        "uid": "grafanacloud-prom"
       },
       "fieldConfig": {
         "defaults": {
@@ -163,7 +163,7 @@
       "type": "timeseries",
       "datasource": {
         "type": "prometheus",
-        "uid": "PROMETHEUS_DS"
+        "uid": "grafanacloud-prom"
       },
       "fieldConfig": {
         "defaults": {
@@ -213,7 +213,7 @@
       "type": "timeseries",
       "datasource": {
         "type": "prometheus",
-        "uid": "PROMETHEUS_DS"
+        "uid": "grafanacloud-prom"
       },
       "fieldConfig": {
         "defaults": {
