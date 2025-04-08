@@ -47,13 +47,6 @@ resource "grafana_dashboard" "PFSense" {
   folder      = grafana_folder.PFSense.id
 }
 
-resource "grafana_dashboard" "Rancher" {
-  provider = grafana.cloud
-
-  config_json = file("${path.module}/dashboards/rancher_metrics_dashboard.json")
-  folder      = grafana_folder.Rancher.id
-}
-
 resource "grafana_dashboard" "Srvr-Node" {
   provider = grafana.cloud
 
