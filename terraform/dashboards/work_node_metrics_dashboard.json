@@ -1,6 +1,6 @@
 {
   "id": null,
-  "uid": "df10f5ab",
+  "uid": "9c324811",
   "title": "Work Node Metrics",
   "timezone": "browser",
   "schemaVersion": 36,
@@ -8,7 +8,7 @@
   "refresh": "10s",
   "panels": [
     {
-      "id": 25495,
+      "id": 71477,
       "title": "CPU Usage",
       "type": "timeseries",
       "datasource": {
@@ -31,7 +31,7 @@
       "targets": [
         {
           "refId": "A",
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"system\" and r.host == \"work-node\")\n  |> keep(columns: [\"_time\", \"cpu\"])\n  |> rename(columns: { \"cpu\": \"_value\" })"
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) =>\n    r._measurement == \"system\" and\n    r._field == \"cpu\" and\n    r.host == \"work-node\"\n  )\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> yield(name: \"mean\")"
         }
       ],
       "options": {
@@ -42,7 +42,7 @@
       }
     },
     {
-      "id": 36485,
+      "id": 79854,
       "title": "Memory Used",
       "type": "timeseries",
       "datasource": {
@@ -65,7 +65,7 @@
       "targets": [
         {
           "refId": "A",
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"system\" and r.host == \"work-node\")\n  |> keep(columns: [\"_time\", \"mem\"])\n  |> rename(columns: { \"mem\": \"_value\" })"
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) =>\n    r._measurement == \"system\" and\n    r._field == \"mem\" and\n    r.host == \"work-node\"\n  )\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> yield(name: \"mean\")"
         }
       ],
       "options": {
@@ -76,7 +76,7 @@
       }
     },
     {
-      "id": 31834,
+      "id": 85584,
       "title": "Max Memory",
       "type": "timeseries",
       "datasource": {
@@ -99,7 +99,7 @@
       "targets": [
         {
           "refId": "A",
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"system\" and r.host == \"work-node\")\n  |> keep(columns: [\"_time\", \"maxmem\"])\n  |> rename(columns: { \"maxmem\": \"_value\" })"
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) =>\n    r._measurement == \"system\" and\n    r._field == \"maxmem\" and\n    r.host == \"work-node\"\n  )\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> yield(name: \"mean\")"
         }
       ],
       "options": {
@@ -110,7 +110,7 @@
       }
     },
     {
-      "id": 43037,
+      "id": 30361,
       "title": "Disk Used",
       "type": "timeseries",
       "datasource": {
@@ -133,7 +133,7 @@
       "targets": [
         {
           "refId": "A",
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"system\" and r.host == \"work-node\")\n  |> keep(columns: [\"_time\", \"disk\"])\n  |> rename(columns: { \"disk\": \"_value\" })"
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) =>\n    r._measurement == \"system\" and\n    r._field == \"disk\" and\n    r.host == \"work-node\"\n  )\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> yield(name: \"mean\")"
         }
       ],
       "options": {
@@ -144,7 +144,7 @@
       }
     },
     {
-      "id": 81638,
+      "id": 82762,
       "title": "Max Disk",
       "type": "timeseries",
       "datasource": {
@@ -167,7 +167,7 @@
       "targets": [
         {
           "refId": "A",
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"system\" and r.host == \"work-node\")\n  |> keep(columns: [\"_time\", \"maxdisk\"])\n  |> rename(columns: { \"maxdisk\": \"_value\" })"
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) =>\n    r._measurement == \"system\" and\n    r._field == \"maxdisk\" and\n    r.host == \"work-node\"\n  )\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> yield(name: \"mean\")"
         }
       ],
       "options": {
@@ -178,7 +178,7 @@
       }
     },
     {
-      "id": 24464,
+      "id": 18940,
       "title": "Network In",
       "type": "timeseries",
       "datasource": {
@@ -201,7 +201,7 @@
       "targets": [
         {
           "refId": "A",
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"system\" and r.host == \"work-node\")\n  |> keep(columns: [\"_time\", \"netin\"])\n  |> rename(columns: { \"netin\": \"_value\" })"
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) =>\n    r._measurement == \"system\" and\n    r._field == \"netin\" and\n    r.host == \"work-node\"\n  )\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> yield(name: \"mean\")"
         }
       ],
       "options": {
@@ -212,7 +212,7 @@
       }
     },
     {
-      "id": 52489,
+      "id": 62951,
       "title": "Network Out",
       "type": "timeseries",
       "datasource": {
@@ -235,7 +235,7 @@
       "targets": [
         {
           "refId": "A",
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"system\" and r.host == \"work-node\")\n  |> keep(columns: [\"_time\", \"netout\"])\n  |> rename(columns: { \"netout\": \"_value\" })"
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) =>\n    r._measurement == \"system\" and\n    r._field == \"netout\" and\n    r.host == \"work-node\"\n  )\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> yield(name: \"mean\")"
         }
       ],
       "options": {
