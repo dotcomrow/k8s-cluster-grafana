@@ -4,12 +4,6 @@ resource "grafana_folder" "Proxmox" {
   title = "Proxmox"
 }
 
-resource "grafana_folder" "Rancher" {
-  provider = grafana.cloud
-
-  title = "Rancher"
-}
-
 resource "grafana_folder" "PFSense" {
   provider = grafana.cloud
 
