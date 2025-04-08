@@ -1,6 +1,6 @@
 {
   "id": null,
-  "uid": "a1380036",
+  "uid": "fce1008b",
   "title": "Memory Metrics",
   "timezone": "browser",
   "schemaVersion": 36,
@@ -8,8 +8,8 @@
   "refresh": "10s",
   "panels": [
     {
-      "id": 26564,
-      "title": "Total Memory Used",
+      "id": 97689,
+      "title": "Memory Used",
       "type": "timeseries",
       "datasource": {
         "type": "influxdb",
@@ -31,7 +31,7 @@
       "targets": [
         {
           "refId": "A",
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"mem\" and r._field == \"used\")\n  |> aggregateWindow(every: 1m, fn: sum)\n  |> yield(name: \"sum\")"
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"mem\" and r._field == \"used\" and r.host == \"pve\")\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> yield(name: \"mean\")"
         }
       ],
       "options": {
@@ -42,8 +42,8 @@
       }
     },
     {
-      "id": 36805,
-      "title": "Total Memory Cached",
+      "id": 97216,
+      "title": "Memory Cached",
       "type": "timeseries",
       "datasource": {
         "type": "influxdb",
@@ -65,7 +65,7 @@
       "targets": [
         {
           "refId": "A",
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"mem\" and r._field == \"cached\")\n  |> aggregateWindow(every: 1m, fn: sum)\n  |> yield(name: \"sum\")"
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"mem\" and r._field == \"cached\" and r.host == \"pve\")\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> yield(name: \"mean\")"
         }
       ],
       "options": {
@@ -76,8 +76,8 @@
       }
     },
     {
-      "id": 16727,
-      "title": "Total Memory Available",
+      "id": 67866,
+      "title": "Memory Available",
       "type": "timeseries",
       "datasource": {
         "type": "influxdb",
@@ -99,7 +99,7 @@
       "targets": [
         {
           "refId": "A",
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"mem\" and r._field == \"available\")\n  |> aggregateWindow(every: 1m, fn: sum)\n  |> yield(name: \"sum\")"
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"mem\" and r._field == \"available\" and r.host == \"pve\")\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> yield(name: \"mean\")"
         }
       ],
       "options": {

@@ -1,6 +1,6 @@
 {
   "id": null,
-  "uid": "0aa20392",
+  "uid": "9cbe4d50",
   "title": "CPU Metrics",
   "timezone": "browser",
   "schemaVersion": 36,
@@ -8,8 +8,8 @@
   "refresh": "10s",
   "panels": [
     {
-      "id": 37099,
-      "title": "Total CPU Usage (System)",
+      "id": 21078,
+      "title": "CPU Usage (System)",
       "type": "timeseries",
       "datasource": {
         "type": "influxdb",
@@ -31,7 +31,7 @@
       "targets": [
         {
           "refId": "A",
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"cpu\" and r._field == \"usage_system\")\n  |> aggregateWindow(every: 1m, fn: sum)\n  |> yield(name: \"sum\")"
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"cpu\" and r._field == \"usage_system\" and r.host == \"pve\" and r[\"cpu\"] == \"cpu-total\")\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> yield(name: \"mean\")"
         }
       ],
       "options": {
@@ -42,8 +42,8 @@
       }
     },
     {
-      "id": 39395,
-      "title": "Total CPU Usage (User)",
+      "id": 54643,
+      "title": "CPU Usage (User)",
       "type": "timeseries",
       "datasource": {
         "type": "influxdb",
@@ -65,7 +65,7 @@
       "targets": [
         {
           "refId": "A",
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"cpu\" and r._field == \"usage_user\")\n  |> aggregateWindow(every: 1m, fn: sum)\n  |> yield(name: \"sum\")"
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"cpu\" and r._field == \"usage_user\" and r.host == \"pve\" and r[\"cpu\"] == \"cpu-total\")\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> yield(name: \"mean\")"
         }
       ],
       "options": {
@@ -76,8 +76,8 @@
       }
     },
     {
-      "id": 77326,
-      "title": "Total CPU Usage (Active)",
+      "id": 33251,
+      "title": "CPU Usage (Active)",
       "type": "timeseries",
       "datasource": {
         "type": "influxdb",
@@ -99,7 +99,7 @@
       "targets": [
         {
           "refId": "A",
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"cpu\" and r._field == \"usage_active\")\n  |> aggregateWindow(every: 1m, fn: sum)\n  |> yield(name: \"sum\")"
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"cpu\" and r._field == \"usage_active\" and r.host == \"pve\" and r[\"cpu\"] == \"cpu-total\")\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> yield(name: \"mean\")"
         }
       ],
       "options": {
