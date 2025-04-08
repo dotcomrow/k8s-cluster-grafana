@@ -1,6 +1,6 @@
 {
   "id": null,
-  "uid": "55e7c0c8",
+  "uid": "000879da",
   "title": "Proxmox Metrics",
   "timezone": "browser",
   "schemaVersion": 36,
@@ -8,8 +8,8 @@
   "refresh": "10s",
   "panels": [
     {
-      "id": 12527,
-      "title": "CPU Usage",
+      "id": 89410,
+      "title": "CPU Usage (System)",
       "type": "timeseries",
       "datasource": {
         "type": "influxdb",
@@ -30,8 +30,8 @@
       },
       "targets": [
         {
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"cpu\" and r._field == \"usage_system\" and r.node == \"pve\")",
-          "refId": "A"
+          "refId": "A",
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"cpu\" and r._field == \"usage_system\" and r.host == \"pve\" and r[\"cpu\"] == \"cpu-total\")\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> yield(name: \"mean\")"
         }
       ],
       "options": {
@@ -42,8 +42,8 @@
       }
     },
     {
-      "id": 30476,
-      "title": "Memory Usage",
+      "id": 2376,
+      "title": "CPU Usage (User)",
       "type": "timeseries",
       "datasource": {
         "type": "influxdb",
@@ -64,8 +64,8 @@
       },
       "targets": [
         {
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"mem\" and r._field == \"used_percent\" and r.node == \"pve\")",
-          "refId": "A"
+          "refId": "A",
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"cpu\" and r._field == \"usage_user\" and r.host == \"pve\" and r[\"cpu\"] == \"cpu-total\")\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> yield(name: \"mean\")"
         }
       ],
       "options": {
@@ -76,8 +76,8 @@
       }
     },
     {
-      "id": 20918,
-      "title": "Disk Usage",
+      "id": 23970,
+      "title": "Memory Used",
       "type": "timeseries",
       "datasource": {
         "type": "influxdb",
@@ -85,7 +85,7 @@
       },
       "fieldConfig": {
         "defaults": {
-          "unit": "percent",
+          "unit": "bytes",
           "decimals": 2
         },
         "overrides": []
@@ -93,13 +93,13 @@
       "gridPos": {
         "h": 8,
         "w": 8,
-        "x": 16,
-        "y": 0
+        "x": 0,
+        "y": 9
       },
       "targets": [
         {
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"disk\" and r._field == \"used_percent\" and r.node == \"pve\")",
-          "refId": "A"
+          "refId": "A",
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"mem\" and r._field == \"used\" and r.host == \"pve\")\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> yield(name: \"mean\")"
         }
       ],
       "options": {
@@ -110,7 +110,109 @@
       }
     },
     {
-      "id": 42989,
+      "id": 79334,
+      "title": "Memory Available",
+      "type": "timeseries",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "eehtcd6pg4pvka"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bytes",
+          "decimals": 2
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 8,
+        "y": 9
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"mem\" and r._field == \"available\" and r.host == \"pve\")\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> yield(name: \"mean\")"
+        }
+      ],
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "bottom"
+        }
+      }
+    },
+    {
+      "id": 74993,
+      "title": "Disk Used",
+      "type": "timeseries",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "eehtcd6pg4pvka"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bytes",
+          "decimals": 2
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 0,
+        "y": 18
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"disk\" and r._field == \"used\" and r.host == \"pve\")\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> yield(name: \"mean\")"
+        }
+      ],
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "bottom"
+        }
+      }
+    },
+    {
+      "id": 19283,
+      "title": "Disk Free",
+      "type": "timeseries",
+      "datasource": {
+        "type": "influxdb",
+        "uid": "eehtcd6pg4pvka"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bytes",
+          "decimals": 2
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 8,
+        "y": 18
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"disk\" and r._field == \"free\" and r.host == \"pve\")\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> yield(name: \"mean\")"
+        }
+      ],
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "bottom"
+        }
+      }
+    },
+    {
+      "id": 29475,
       "title": "Network In",
       "type": "timeseries",
       "datasource": {
@@ -128,12 +230,12 @@
         "h": 8,
         "w": 8,
         "x": 0,
-        "y": 9
+        "y": 27
       },
       "targets": [
         {
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"net\" and r._field == \"bytes_recv\" and r.node == \"pve\")",
-          "refId": "A"
+          "refId": "A",
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"net\" and r._field == \"bytes_recv\" and r.host == \"pve\")\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> yield(name: \"mean\")"
         }
       ],
       "options": {
@@ -144,7 +246,7 @@
       }
     },
     {
-      "id": 42638,
+      "id": 45329,
       "title": "Network Out",
       "type": "timeseries",
       "datasource": {
@@ -162,12 +264,12 @@
         "h": 8,
         "w": 8,
         "x": 8,
-        "y": 9
+        "y": 27
       },
       "targets": [
         {
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"net\" and r._field == \"bytes_sent\" and r.node == \"pve\")",
-          "refId": "A"
+          "refId": "A",
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"net\" and r._field == \"bytes_sent\" and r.host == \"pve\")\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> yield(name: \"mean\")"
         }
       ],
       "options": {

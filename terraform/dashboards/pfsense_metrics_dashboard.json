@@ -1,6 +1,6 @@
 {
   "id": null,
-  "uid": "c480efdc",
+  "uid": "345969e6",
   "title": "PFSense Metrics",
   "timezone": "browser",
   "schemaVersion": 36,
@@ -8,7 +8,7 @@
   "refresh": "10s",
   "panels": [
     {
-      "id": 47299,
+      "id": 82449,
       "title": "CPU Usage",
       "type": "timeseries",
       "datasource": {
@@ -31,7 +31,7 @@
       "targets": [
         {
           "refId": "A",
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) =>\n    r._measurement == \"system\" and\n    r._field == \"cpu\" and\n    r.host == \"pfsense\"\n  )\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> yield(name: \"mean\")"
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) =>\n    r._measurement == \"system\" and\n    r._field == \"cpu\" and\n    r.host == \"PFSense\"\n  )\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> yield(name: \"mean\")"
         }
       ],
       "options": {
@@ -42,7 +42,7 @@
       }
     },
     {
-      "id": 66289,
+      "id": 35598,
       "title": "Memory Used",
       "type": "timeseries",
       "datasource": {
@@ -65,7 +65,7 @@
       "targets": [
         {
           "refId": "A",
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) =>\n    r._measurement == \"system\" and\n    r._field == \"mem\" and\n    r.host == \"pfsense\"\n  )\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> yield(name: \"mean\")"
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) =>\n    r._measurement == \"system\" and\n    r._field == \"mem\" and\n    r.host == \"PFSense\"\n  )\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> yield(name: \"mean\")"
         }
       ],
       "options": {
@@ -76,7 +76,7 @@
       }
     },
     {
-      "id": 30074,
+      "id": 22584,
       "title": "Max Memory",
       "type": "timeseries",
       "datasource": {
@@ -99,7 +99,7 @@
       "targets": [
         {
           "refId": "A",
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) =>\n    r._measurement == \"system\" and\n    r._field == \"maxmem\" and\n    r.host == \"pfsense\"\n  )\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> yield(name: \"mean\")"
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) =>\n    r._measurement == \"system\" and\n    r._field == \"maxmem\" and\n    r.host == \"PFSense\"\n  )\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> yield(name: \"mean\")"
         }
       ],
       "options": {
@@ -110,7 +110,7 @@
       }
     },
     {
-      "id": 33263,
+      "id": 76551,
       "title": "Disk Used",
       "type": "timeseries",
       "datasource": {
@@ -133,7 +133,7 @@
       "targets": [
         {
           "refId": "A",
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) =>\n    r._measurement == \"system\" and\n    r._field == \"disk\" and\n    r.host == \"pfsense\"\n  )\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> yield(name: \"mean\")"
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) =>\n    r._measurement == \"system\" and\n    r._field == \"disk\" and\n    r.host == \"PFSense\"\n  )\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> yield(name: \"mean\")"
         }
       ],
       "options": {
@@ -144,7 +144,7 @@
       }
     },
     {
-      "id": 15360,
+      "id": 12258,
       "title": "Max Disk",
       "type": "timeseries",
       "datasource": {
@@ -167,7 +167,7 @@
       "targets": [
         {
           "refId": "A",
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) =>\n    r._measurement == \"system\" and\n    r._field == \"maxdisk\" and\n    r.host == \"pfsense\"\n  )\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> yield(name: \"mean\")"
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) =>\n    r._measurement == \"system\" and\n    r._field == \"maxdisk\" and\n    r.host == \"PFSense\"\n  )\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> yield(name: \"mean\")"
         }
       ],
       "options": {
@@ -178,7 +178,7 @@
       }
     },
     {
-      "id": 64791,
+      "id": 29531,
       "title": "Network In",
       "type": "timeseries",
       "datasource": {
@@ -201,7 +201,7 @@
       "targets": [
         {
           "refId": "A",
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) =>\n    r._measurement == \"system\" and\n    r._field == \"netin\" and\n    r.host == \"pfsense\"\n  )\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> yield(name: \"mean\")"
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) =>\n    r._measurement == \"system\" and\n    r._field == \"netin\" and\n    r.host == \"PFSense\"\n  )\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> yield(name: \"mean\")"
         }
       ],
       "options": {
@@ -212,7 +212,7 @@
       }
     },
     {
-      "id": 84792,
+      "id": 26339,
       "title": "Network Out",
       "type": "timeseries",
       "datasource": {
@@ -235,7 +235,7 @@
       "targets": [
         {
           "refId": "A",
-          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) =>\n    r._measurement == \"system\" and\n    r._field == \"netout\" and\n    r.host == \"pfsense\"\n  )\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> yield(name: \"mean\")"
+          "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) =>\n    r._measurement == \"system\" and\n    r._field == \"netout\" and\n    r.host == \"PFSense\"\n  )\n  |> aggregateWindow(every: 1m, fn: mean)\n  |> yield(name: \"mean\")"
         }
       ],
       "options": {
