@@ -42,7 +42,7 @@ resource "null_resource" "upload_dashboards" {
             -H "Content-Type: application/json" \
             -H "Authorization: Bearer ${var.grafana_service_account_token}" \
             --data-binary @- \
-            https://${var.grafana_instance_url}/api/dashboards/db
+            ${var.grafana_instance_url}/api/dashboards/db
     EOT
     interpreter = ["bash", "-c"]
   }
