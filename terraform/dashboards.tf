@@ -82,7 +82,7 @@ resource "grafana_dashboard" "GPU-Node" {
   folder      = grafana_folder.GPU.id
 }
 
-resource "ipmi_dashboard" "IPMI_Metrics" {
+resource "grafana_dashboard" "IPMI_Metrics" {
   provider = grafana.cloud
 
   config_json = file("${path.module}/dashboards/ipmi_metrics_dashboard.json")
