@@ -6,7 +6,7 @@ resource "null_resource" "upload_dashboard_cpu_metrics_dashboard" {
   triggers = {
     always_run = timestamp()
   }
-
+  
   depends_on = [grafana_folder.CPU]
 }
 
