@@ -1,4 +1,4 @@
-# Dashboard JSON filenames per folder
+
 locals {
   dashboards = {
     CPU          = "cpu_metrics_dashboard.json"
@@ -8,37 +8,47 @@ locals {
     Network      = "network_metrics_dashboard.json"
     Proxmox      = "proxmox_metrics_dashboard.json"
     PFSense      = "pfsense_metrics_dashboard.json"
-    Srvr-Node    = "srvr_node_metrics_dashboard.json"
-    Work-Node    = "work_node_metrics_dashboard.json"
-    Ctrl-Node    = "ctrl_node_metrics_dashboard.json"
-    Etcd-Node    = "etcd_node_metrics_dashboard.json"
-    GPU-Node     = "gpu_metrics_dashboard.json"
-    Proxmox = "ipmi_metrics_dashboard.json"
+    Srvr_Node    = "srvr_node_metrics_dashboard.json"
+    Work_Node    = "work_node_metrics_dashboard.json"
+    Ctrl_Node    = "ctrl_node_metrics_dashboard.json"
+    Etcd_Node    = "etcd_node_metrics_dashboard.json"
+    IPMI_Metrics = "ipmi_metrics_dashboard.json"
+  }
+
+  folder_uids = {
+    CPU          = grafana_folder.CPU.uid
+    GPU          = grafana_folder.GPU.uid
+    Memory       = grafana_folder.Memory.uid
+    Disk         = grafana_folder.Disk.uid
+    Network      = grafana_folder.Network.uid
+    Proxmox      = grafana_folder.Proxmox.uid
+    PFSense      = grafana_folder.PFSense.uid
+    Srvr_Node    = grafana_folder.Srvr-Node.uid
+    Work_Node    = grafana_folder.Work-Node.uid
+    Ctrl_Node    = grafana_folder.Ctrl-Node.uid
+    Etcd_Node    = grafana_folder.Etcd-Node.uid
+    IPMI_Metrics = grafana_folder.Proxmox.uid
   }
 }
 
-# One null_resource per dashboard, inject folder UID dynamically
 resource "null_resource" "upload_dashboards" {
   for_each = local.dashboards
 
   provisioner "local-exec" {
     command = <<EOT
-      echo "📤 Uploading ${each.key} dashboard to its folder..."
-      FOLDER_UID=$(
-        terraform output -raw ${replace(each.key, "-", "_")}_folder_uid
-      )
-      jq --arg folderUid "$FOLDER_UID" '.folderUid = $folderUid' "${path.module}/dashboards/${each.value}" \
+      echo "📤 Uploading ${each.key}..."
+      jq --arg folderUid "${local.folder_uids[each.key]}" '.folderUid = $folderUid' "${path.module}/dashboards/${each.value}" \
         | curl -s -X POST \
-          -H "Content-Type: application/json" \
-          -H "Authorization: Bearer ${var.grafana_service_account_token}" \
-          --data-binary @- \
-          https://${var.grafana_instance_url}/api/dashboards/db
+            -H "Content-Type: application/json" \
+            -H "Authorization: Bearer ${var.grafana_service_account_token}" \
+            --data-binary @- \
+            https://${var.grafana_instance_url}/api/dashboards/db
     EOT
     interpreter = ["bash", "-c"]
   }
 
   triggers = {
-    always_run = "${timestamp()}"
+    always_run = timestamp()
   }
 
   depends_on = [
