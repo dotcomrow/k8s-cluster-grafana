@@ -11,7 +11,7 @@
       {
         "datasource": {
           "type": "influxdb",
-          "uid": "grafanacloud-prom"
+          "uid": "eehtcd6pg4pvka"
         },
         "fieldConfig": {
           "defaults": {
