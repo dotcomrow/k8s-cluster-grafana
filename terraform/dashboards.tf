@@ -1,67 +1,158 @@
+variable "grafana_instance_url" {}
+variable "grafana_service_account_token" {}
 
-locals {
-  dashboards = {
-    CPU          = "cpu_metrics_dashboard.json"
-    GPU          = "gpu_metrics_dashboard.json"
-    Memory       = "memory_metrics_dashboard.json"
-    Disk         = "disk_metrics_dashboard.json"
-    Network      = "network_metrics_dashboard.json"
-    Proxmox      = "proxmox_metrics_dashboard.json"
-    PFSense      = "pfsense_metrics_dashboard.json"
-    Srvr_Node    = "srvr_node_metrics_dashboard.json"
-    Work_Node    = "work_node_metrics_dashboard.json"
-    Ctrl_Node    = "ctrl_node_metrics_dashboard.json"
-    Etcd_Node    = "etcd_node_metrics_dashboard.json"
-    IPMI_Metrics = "ipmi_metrics_dashboard.json"
-  }
 
-  folder_uids = {
-    CPU          = grafana_folder.CPU.uid
-    GPU          = grafana_folder.GPU.uid
-    Memory       = grafana_folder.Memory.uid
-    Disk         = grafana_folder.Disk.uid
-    Network      = grafana_folder.Network.uid
-    Proxmox      = grafana_folder.Proxmox.uid
-    PFSense      = grafana_folder.PFSense.uid
-    Srvr_Node    = grafana_folder.Srvr-Node.uid
-    Work_Node    = grafana_folder.Work-Node.uid
-    Ctrl_Node    = grafana_folder.Ctrl-Node.uid
-    Etcd_Node    = grafana_folder.Etcd-Node.uid
-    IPMI_Metrics = grafana_folder.Proxmox.uid
-  }
-}
-
-resource "null_resource" "upload_dashboards" {
-  for_each = local.dashboards
-
+resource "null_resource" "upload_dashboard_cpu_metrics_dashboard" {
   provisioner "local-exec" {
-    command = <<EOT
-      echo "📤 Uploading ${each.key}..."
-      jq --arg folderUid "${local.folder_uids[each.key]}" '.folderUid = $folderUid' "${path.module}/dashboards/${each.value}" \
-        | curl -s -X POST \
-            -H "Content-Type: application/json" \
-            -H "Authorization: Bearer ${var.grafana_service_account_token}" \
-            --data-binary @- \
-            ${var.grafana_instance_url}/api/dashboards/db
-    EOT
-    interpreter = ["bash", "-c"]
+    command = "${path.module}/scripts/upload_dashboard.sh ${path.module}/dashboards/cpu_metrics_dashboard.json ${grafana_folder.CPU.uid} ${var.grafana_instance_url} ${var.grafana_service_account_token}"
   }
 
   triggers = {
     always_run = timestamp()
   }
 
-  depends_on = [
-    grafana_folder.CPU,
-    grafana_folder.GPU,
-    grafana_folder.Memory,
-    grafana_folder.Disk,
-    grafana_folder.Network,
-    grafana_folder.Proxmox,
-    grafana_folder.PFSense,
-    grafana_folder.Srvr-Node,
-    grafana_folder.Work-Node,
-    grafana_folder.Ctrl-Node,
-    grafana_folder.Etcd-Node
-  ]
+  depends_on = [grafana_folder.CPU]
+}
+
+
+resource "null_resource" "upload_dashboard_gpu_metrics_dashboard" {
+  provisioner "local-exec" {
+    command = "${path.module}/scripts/upload_dashboard.sh ${path.module}/dashboards/gpu_metrics_dashboard.json ${grafana_folder.GPU.uid} ${var.grafana_instance_url} ${var.grafana_service_account_token}"
+  }
+
+  triggers = {
+    always_run = timestamp()
+  }
+
+  depends_on = [grafana_folder.GPU]
+}
+
+
+resource "null_resource" "upload_dashboard_memory_metrics_dashboard" {
+  provisioner "local-exec" {
+    command = "${path.module}/scripts/upload_dashboard.sh ${path.module}/dashboards/memory_metrics_dashboard.json ${grafana_folder.Memory.uid} ${var.grafana_instance_url} ${var.grafana_service_account_token}"
+  }
+
+  triggers = {
+    always_run = timestamp()
+  }
+
+  depends_on = [grafana_folder.Memory]
+}
+
+
+resource "null_resource" "upload_dashboard_disk_metrics_dashboard" {
+  provisioner "local-exec" {
+    command = "${path.module}/scripts/upload_dashboard.sh ${path.module}/dashboards/disk_metrics_dashboard.json ${grafana_folder.Disk.uid} ${var.grafana_instance_url} ${var.grafana_service_account_token}"
+  }
+
+  triggers = {
+    always_run = timestamp()
+  }
+
+  depends_on = [grafana_folder.Disk]
+}
+
+
+resource "null_resource" "upload_dashboard_network_metrics_dashboard" {
+  provisioner "local-exec" {
+    command = "${path.module}/scripts/upload_dashboard.sh ${path.module}/dashboards/network_metrics_dashboard.json ${grafana_folder.Network.uid} ${var.grafana_instance_url} ${var.grafana_service_account_token}"
+  }
+
+  triggers = {
+    always_run = timestamp()
+  }
+
+  depends_on = [grafana_folder.Network]
+}
+
+
+resource "null_resource" "upload_dashboard_proxmox_metrics_dashboard" {
+  provisioner "local-exec" {
+    command = "${path.module}/scripts/upload_dashboard.sh ${path.module}/dashboards/proxmox_metrics_dashboard.json ${grafana_folder.Proxmox.uid} ${var.grafana_instance_url} ${var.grafana_service_account_token}"
+  }
+
+  triggers = {
+    always_run = timestamp()
+  }
+
+  depends_on = [grafana_folder.Proxmox]
+}
+
+
+resource "null_resource" "upload_dashboard_pfsense_metrics_dashboard" {
+  provisioner "local-exec" {
+    command = "${path.module}/scripts/upload_dashboard.sh ${path.module}/dashboards/pfsense_metrics_dashboard.json ${grafana_folder.PFSense.uid} ${var.grafana_instance_url} ${var.grafana_service_account_token}"
+  }
+
+  triggers = {
+    always_run = timestamp()
+  }
+
+  depends_on = [grafana_folder.PFSense]
+}
+
+
+resource "null_resource" "upload_dashboard_srvr_node_metrics_dashboard" {
+  provisioner "local-exec" {
+    command = "${path.module}/scripts/upload_dashboard.sh ${path.module}/dashboards/srvr_node_metrics_dashboard.json ${grafana_folder.Srvr_Node.uid} ${var.grafana_instance_url} ${var.grafana_service_account_token}"
+  }
+
+  triggers = {
+    always_run = timestamp()
+  }
+
+  depends_on = [grafana_folder.Srvr_Node]
+}
+
+
+resource "null_resource" "upload_dashboard_work_node_metrics_dashboard" {
+  provisioner "local-exec" {
+    command = "${path.module}/scripts/upload_dashboard.sh ${path.module}/dashboards/work_node_metrics_dashboard.json ${grafana_folder.Work_Node.uid} ${var.grafana_instance_url} ${var.grafana_service_account_token}"
+  }
+
+  triggers = {
+    always_run = timestamp()
+  }
+
+  depends_on = [grafana_folder.Work_Node]
+}
+
+
+resource "null_resource" "upload_dashboard_ctrl_node_metrics_dashboard" {
+  provisioner "local-exec" {
+    command = "${path.module}/scripts/upload_dashboard.sh ${path.module}/dashboards/ctrl_node_metrics_dashboard.json ${grafana_folder.Ctrl_Node.uid} ${var.grafana_instance_url} ${var.grafana_service_account_token}"
+  }
+
+  triggers = {
+    always_run = timestamp()
+  }
+
+  depends_on = [grafana_folder.Ctrl_Node]
+}
+
+
+resource "null_resource" "upload_dashboard_etcd_node_metrics_dashboard" {
+  provisioner "local-exec" {
+    command = "${path.module}/scripts/upload_dashboard.sh ${path.module}/dashboards/etcd_node_metrics_dashboard.json ${grafana_folder.Etcd_Node.uid} ${var.grafana_instance_url} ${var.grafana_service_account_token}"
+  }
+
+  triggers = {
+    always_run = timestamp()
+  }
+
+  depends_on = [grafana_folder.Etcd_Node]
+}
+
+
+resource "null_resource" "upload_dashboard_ipmi_metrics_dashboard" {
+  provisioner "local-exec" {
+    command = "${path.module}/scripts/upload_dashboard.sh ${path.module}/dashboards/ipmi_metrics_dashboard.json ${grafana_folder.Proxmox.uid} ${var.grafana_instance_url} ${var.grafana_service_account_token}"
+  }
+
+  triggers = {
+    always_run = timestamp()
+  }
+
+  depends_on = [grafana_folder.Proxmox]
 }
