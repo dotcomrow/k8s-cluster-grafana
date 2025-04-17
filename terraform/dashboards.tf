@@ -1,7 +1,3 @@
-variable "grafana_instance_url" {}
-variable "grafana_service_account_token" {}
-
-
 resource "null_resource" "upload_dashboard_cpu_metrics_dashboard" {
   provisioner "local-exec" {
     command = "${path.module}/scripts/upload_dashboard.sh ${path.module}/dashboards/cpu_metrics_dashboard.json ${grafana_folder["CPU"].uid} ${var.grafana_instance_url} ${var.grafana_service_account_token}"
