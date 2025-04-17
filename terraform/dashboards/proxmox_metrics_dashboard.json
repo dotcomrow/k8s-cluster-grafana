@@ -1,6 +1,6 @@
 {
   "id": null,
-  "uid": "000879da",
+  "uid": "proxmox_metrics_dashboard",
   "title": "Proxmox Metrics",
   "timezone": "browser",
   "schemaVersion": 36,
@@ -299,5 +299,6 @@
         "type": "dashboard"
       }
     ]
-  }
+  },
+  "folderUid": "REPLACE_ME"
 }

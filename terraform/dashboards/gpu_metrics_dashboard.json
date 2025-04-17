@@ -1,6 +1,6 @@
 {
   "id": null,
-  "uid": "34b9a1ae",
+  "uid": "gpu_metrics_dashboard",
   "title": "GPU Metrics",
   "timezone": "browser",
   "schemaVersion": 36,
@@ -207,5 +207,6 @@
         "type": "dashboard"
       }
     ]
-  }
+  },
+  "folderUid": "REPLACE_ME"
 }

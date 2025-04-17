@@ -1,6 +1,6 @@
 {
   "id": null,
-  "uid": "fce1008b",
+  "uid": "memory_metrics_dashboard",
   "title": "Memory Metrics",
   "timezone": "browser",
   "schemaVersion": 36,
@@ -129,5 +129,6 @@
         "type": "dashboard"
       }
     ]
-  }
+  },
+  "folderUid": "REPLACE_ME"
 }

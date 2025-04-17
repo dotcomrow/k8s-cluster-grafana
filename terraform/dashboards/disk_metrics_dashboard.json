@@ -1,6 +1,6 @@
 {
   "id": null,
-  "uid": "ccfaee8e",
+  "uid": "disk_metrics_dashboard",
   "title": "Disk Metrics",
   "timezone": "browser",
   "schemaVersion": 36,
@@ -129,5 +129,6 @@
         "type": "dashboard"
       }
     ]
-  }
+  },
+  "folderUid": "REPLACE_ME"
 }

@@ -1,6 +1,6 @@
 {
   "id": null,
-  "uid": "71bdc403",
+  "uid": "srvr_node_metrics_dashboard",
   "title": "Srvr Node Metrics",
   "timezone": "browser",
   "schemaVersion": 36,
@@ -265,5 +265,6 @@
         "type": "dashboard"
       }
     ]
-  }
+  },
+  "folderUid": "REPLACE_ME"
 }

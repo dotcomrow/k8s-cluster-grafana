@@ -1,6 +1,6 @@
 {
   "id": null,
-  "uid": "d1c46c84",
+  "uid": "etcd_node_metrics_dashboard",
   "title": "Etcd Node Metrics",
   "timezone": "browser",
   "schemaVersion": 36,
@@ -265,5 +265,6 @@
         "type": "dashboard"
       }
     ]
-  }
+  },
+  "folderUid": "REPLACE_ME"
 }

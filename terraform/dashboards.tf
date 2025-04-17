@@ -1,90 +1,57 @@
-resource "grafana_dashboard" "CPU" {
-  provider = grafana.cloud
-
-  config_json = file("${path.module}/dashboards/cpu_metrics_dashboard.json")
-  folder      = grafana_folder.CPU.id
+# Dashboard JSON filenames per folder
+locals {
+  dashboards = {
+    CPU          = "cpu_metrics_dashboard.json"
+    GPU          = "gpu_metrics_dashboard.json"
+    Memory       = "memory_metrics_dashboard.json"
+    Disk         = "disk_metrics_dashboard.json"
+    Network      = "network_metrics_dashboard.json"
+    Proxmox      = "proxmox_metrics_dashboard.json"
+    PFSense      = "pfsense_metrics_dashboard.json"
+    Srvr-Node    = "srvr_node_metrics_dashboard.json"
+    Work-Node    = "work_node_metrics_dashboard.json"
+    Ctrl-Node    = "ctrl_node_metrics_dashboard.json"
+    Etcd-Node    = "etcd_node_metrics_dashboard.json"
+    GPU-Node     = "gpu_metrics_dashboard.json"
+    Proxmox = "ipmi_metrics_dashboard.json"
+  }
 }
 
-resource "grafana_dashboard" "GPU" {
-  provider = grafana.cloud
+# One null_resource per dashboard, inject folder UID dynamically
+resource "null_resource" "upload_dashboards" {
+  for_each = local.dashboards
 
-  config_json = file("${path.module}/dashboards/gpu_metrics_dashboard.json")
-  folder      = grafana_folder.GPU.id
-}
+  provisioner "local-exec" {
+    command = <<EOT
+      echo "📤 Uploading ${each.key} dashboard to its folder..."
+      FOLDER_UID=$(
+        terraform output -raw ${replace(each.key, "-", "_")}_folder_uid
+      )
+      jq --arg folderUid "$FOLDER_UID" '.folderUid = $folderUid' "${path.module}/dashboards/${each.value}" \
+        | curl -s -X POST \
+          -H "Content-Type: application/json" \
+          -H "Authorization: Bearer ${var.grafana_service_account_token}" \
+          --data-binary @- \
+          https://${var.grafana_instance_url}/api/dashboards/db
+    EOT
+    interpreter = ["bash", "-c"]
+  }
 
-resource "grafana_dashboard" "Memory" {
-  provider = grafana.cloud
+  triggers = {
+    always_run = "${timestamp()}"
+  }
 
-  config_json = file("${path.module}/dashboards/memory_metrics_dashboard.json")
-  folder      = grafana_folder.Memory.id
-}
-
-resource "grafana_dashboard" "Disk" {
-  provider = grafana.cloud
-
-  config_json = file("${path.module}/dashboards/disk_metrics_dashboard.json")
-  folder      = grafana_folder.Disk.id
-}
-
-resource "grafana_dashboard" "Network" {
-  provider = grafana.cloud
-
-  config_json = file("${path.module}/dashboards/network_metrics_dashboard.json")
-  folder      = grafana_folder.Network.id
-}
-
-resource "grafana_dashboard" "Proxmox" {
-  provider = grafana.cloud
-
-  config_json = file("${path.module}/dashboards/proxmox_metrics_dashboard.json")
-  folder      = grafana_folder.Proxmox.id
-}
-
-resource "grafana_dashboard" "PFSense" {
-  provider = grafana.cloud
-
-  config_json = file("${path.module}/dashboards/pfsense_metrics_dashboard.json")
-  folder      = grafana_folder.PFSense.id
-}
-
-resource "grafana_dashboard" "Srvr-Node" {
-  provider = grafana.cloud
-
-  config_json = file("${path.module}/dashboards/srvr_node_metrics_dashboard.json")
-  folder      = grafana_folder.Srvr-Node.id
-}
-
-resource "grafana_dashboard" "Work-Node" {
-  provider = grafana.cloud
-
-  config_json = file("${path.module}/dashboards/work_node_metrics_dashboard.json")
-  folder      = grafana_folder.Work-Node.id
-}
-
-resource "grafana_dashboard" "Ctrl-Node" {
-  provider = grafana.cloud
-
-  config_json = file("${path.module}/dashboards/ctrl_node_metrics_dashboard.json")
-  folder      = grafana_folder.Ctrl-Node.id
-}
-
-resource "grafana_dashboard" "Etcd-Node" {
-  provider = grafana.cloud
-
-  config_json = file("${path.module}/dashboards/etcd_node_metrics_dashboard.json")
-  folder      = grafana_folder.Etcd-Node.id
-}
-
-resource "grafana_dashboard" "GPU-Node" {
-  provider = grafana.cloud
-
-  config_json = file("${path.module}/dashboards/gpu_metrics_dashboard.json")
-  folder      = grafana_folder.GPU.id
-}
-
-resource "grafana_dashboard" "IPMI_Metrics" {
-  provider = grafana.cloud
-
-  config_json = file("${path.module}/dashboards/ipmi_metrics_dashboard.json")
-  folder      = grafana_folder.Proxmox.id
+  depends_on = [
+    grafana_folder.CPU,
+    grafana_folder.GPU,
+    grafana_folder.Memory,
+    grafana_folder.Disk,
+    grafana_folder.Network,
+    grafana_folder.Proxmox,
+    grafana_folder.PFSense,
+    grafana_folder.Srvr-Node,
+    grafana_folder.Work-Node,
+    grafana_folder.Ctrl-Node,
+    grafana_folder.Etcd-Node
+  ]
 }

@@ -1,6 +1,6 @@
 {
   "id": null,
-  "uid": "54d68155",
+  "uid": "network_metrics_dashboard",
   "title": "Network Metrics",
   "timezone": "browser",
   "schemaVersion": 36,
@@ -163,5 +163,6 @@
         "type": "dashboard"
       }
     ]
-  }
+  },
+  "folderUid": "REPLACE_ME"
 }
