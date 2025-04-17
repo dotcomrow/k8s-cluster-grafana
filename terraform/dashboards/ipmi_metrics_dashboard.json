@@ -1,0 +1,64 @@
+{
+    "annotations": {
+      "list": []
+    },
+    "editable": true,
+    "gnetId": null,
+    "graphTooltip": 0,
+    "id": null,
+    "iteration": 1680000000000,
+    "panels": [
+      {
+        "datasource": {
+          "type": "influxdb",
+          "uid": "grafanacloud-prom"
+        },
+        "fieldConfig": {
+          "defaults": {
+            "unit": "short"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 8,
+          "x": 0,
+          "y": 0
+        },
+        "id": 1,
+        "options": {
+          "legend": {
+            "displayMode": "list",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "single"
+          }
+        },
+        "targets": [
+          {
+            "query": "from(bucket: \"proxmox\")\n  |> range(start: -1h)\n  |> filter(fn: (r) => r._measurement == \"ipmi_sensor\" and r._field == \"value\")\n  |> keep(columns: [\"_time\", \"_value\", \"host\", \"name\", \"unit\"])\n  |> group(columns: [\"name\"])\n  |> aggregateWindow(every: 1m, fn: mean, createEmpty: false)",
+            "refId": "A"
+          }
+        ],
+        "title": "IPMI Sensor Values",
+        "type": "timeseries"
+      }
+    ],
+    "schemaVersion": 36,
+    "style": "dark",
+    "tags": [],
+    "templating": {
+      "list": []
+    },
+    "time": {
+      "from": "now-1h",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "browser",
+    "title": "IPMI Sensor Dashboard",
+    "uid": null,
+    "version": 1
+  }
+  

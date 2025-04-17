@@ -81,3 +81,10 @@ resource "grafana_dashboard" "GPU-Node" {
   config_json = file("${path.module}/dashboards/gpu_metrics_dashboard.json")
   folder      = grafana_folder.GPU.id
 }
+
+resource "ipmi_dashboard" "IPMI_Metrics" {
+  provider = grafana.cloud
+
+  config_json = file("${path.module}/dashboards/ipmi_metrics_dashboard.json")
+  folder      = grafana_folder.Proxmox.id
+}

@@ -560,6 +560,34 @@
 }
 ,
 {
+  "measurement": "ipmi_sensor",
+  "fields": [
+    {
+      "key": "table",
+      "type": "_value"
+    },
+    {
+      "key": "0",
+      "type": "status"
+    },
+    {
+      "key": "0",
+      "type": "value"
+    }
+  ],
+  "tags": [
+    "table",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0",
+    "0"
+  ]
+}
+,
+{
   "measurement": "mem",
   "fields": [
     {
@@ -723,6 +751,10 @@
     {
       "key": "0",
       "type": "arcsize"
+    },
+    {
+      "key": "0",
+      "type": "memavailable"
     },
     {
       "key": "0",
