@@ -17,4 +17,4 @@ jq --arg folderUid "$folder_uid" \
     -H "Content-Type: application/json" \
     -H "Authorization: Bearer $grafana_token" \
     --data-binary @- \
-    "https://$grafana_instance/api/dashboards/db"
+    "$grafana_instance/api/dashboards/db"
