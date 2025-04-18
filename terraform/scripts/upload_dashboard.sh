@@ -9,12 +9,12 @@ API_TOKEN="$4"
 LOG_FILE="/tmp/grafana_upload_$(basename "$DASHBOARD_FILE" .json).log"
 
 if [[ ! -f "$DASHBOARD_FILE" ]]; then
-  echo "❌ Dashboard file not found: $DASHBOARD_FILE" | tee -a "$LOG_FILE"
+  echo "❌ Dashboard file not found : $DASHBOARD_FILE" | tee -a "$LOG_FILE"
   exit 1
 fi
 
 if [[ -z "$FOLDER_UID" || -z "$GRAFANA_URL" || -z "$API_TOKEN" ]]; then
-  echo "❌ One or more required parameters are missing." | tee -a "$LOG_FILE"
+  echo "❌ One or more required parameters are missing. " | tee -a "$LOG_FILE"
   exit 1
 fi
 
