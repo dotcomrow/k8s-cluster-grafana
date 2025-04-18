@@ -20,7 +20,7 @@ fi
 
 echo "📤 Uploading dashboard : $DASHBOARD_FILE" | tee "$LOG_FILE"
 
-curl -s -w "\nHTTP %{http_code}\n" -X POST \
+curl -s -w "\nHTTP %{http_code}\n" --http1.1 -X POST \
   -H "Authorization: Bearer ${API_TOKEN}" \
   -H "Content-Type: application/json" \
   -d "{
