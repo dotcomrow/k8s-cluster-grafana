@@ -18,7 +18,7 @@ if [[ -z "$FOLDER_UID" || -z "$GRAFANA_URL" || -z "$API_TOKEN" ]]; then
   exit 1
 fi
 
-echo "📤 Uploading dashboard: $DASHBOARD_FILE" | tee "$LOG_FILE"
+echo "📤 Uploading dashboard : $DASHBOARD_FILE" | tee "$LOG_FILE"
 
 curl -s -w "\nHTTP %{http_code}\n" -X POST \
   -H "Authorization: Bearer ${API_TOKEN}" \
