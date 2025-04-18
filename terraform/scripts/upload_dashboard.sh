@@ -29,3 +29,5 @@ curl -s -w "\nHTTP %{http_code}\n" -X POST \
     \"overwrite\": true
   }" \
   "${GRAFANA_URL}/api/dashboards/db" | tee -a "$LOG_FILE"
+
+cat "$LOG_FILE"
