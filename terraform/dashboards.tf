@@ -21,7 +21,7 @@ resource "null_resource" "upload_dashboard_gpu_metrics_dashboard" {
   triggers = {
     always_run = timestamp()
   }
-  depends_on = [grafana_folder.gpu]
+  depends_on = [null_resource.upload_dashboard_cpu_metrics_dashboard]
 }
 
 resource "null_resource" "upload_dashboard_memory_metrics_dashboard" {
@@ -34,7 +34,7 @@ resource "null_resource" "upload_dashboard_memory_metrics_dashboard" {
   triggers = {
     always_run = timestamp()
   }
-  depends_on = [grafana_folder.memory]
+  depends_on = [null_resource.upload_dashboard_gpu_metrics_dashboard]
 }
 
 resource "null_resource" "upload_dashboard_disk_metrics_dashboard" {
@@ -47,7 +47,7 @@ resource "null_resource" "upload_dashboard_disk_metrics_dashboard" {
   triggers = {
     always_run = timestamp()
   }
-  depends_on = [grafana_folder.disk]
+  depends_on = [null_resource.upload_dashboard_memory_metrics_dashboard]
 }
 
 resource "null_resource" "upload_dashboard_network_metrics_dashboard" {
@@ -60,7 +60,7 @@ resource "null_resource" "upload_dashboard_network_metrics_dashboard" {
   triggers = {
     always_run = timestamp()
   }
-  depends_on = [grafana_folder.network]
+  depends_on = [null_resource.upload_dashboard_disk_metrics_dashboard]
 }
 
 resource "null_resource" "upload_dashboard_proxmox_metrics_dashboard" {
@@ -73,7 +73,7 @@ resource "null_resource" "upload_dashboard_proxmox_metrics_dashboard" {
   triggers = {
     always_run = timestamp()
   }
-  depends_on = [grafana_folder.proxmox]
+  depends_on = [null_resource.upload_dashboard_network_metrics_dashboard]
 }
 
 resource "null_resource" "upload_dashboard_pfsense_metrics_dashboard" {
@@ -86,7 +86,7 @@ resource "null_resource" "upload_dashboard_pfsense_metrics_dashboard" {
   triggers = {
     always_run = timestamp()
   }
-  depends_on = [grafana_folder.pfsense]
+  depends_on = [null_resource.upload_dashboard_proxmox_metrics_dashboard]
 }
 
 resource "null_resource" "upload_dashboard_srvr_node_metrics_dashboard" {
@@ -99,7 +99,7 @@ resource "null_resource" "upload_dashboard_srvr_node_metrics_dashboard" {
   triggers = {
     always_run = timestamp()
   }
-  depends_on = [grafana_folder.srvr_node]
+  depends_on = [null_resource.upload_dashboard_pfsense_metrics_dashboard]
 }
 
 resource "null_resource" "upload_dashboard_work_node_metrics_dashboard" {
@@ -112,7 +112,7 @@ resource "null_resource" "upload_dashboard_work_node_metrics_dashboard" {
   triggers = {
     always_run = timestamp()
   }
-  depends_on = [grafana_folder.work_node]
+  depends_on = [null_resource.upload_dashboard_srvr_node_metrics_dashboard]
 }
 
 resource "null_resource" "upload_dashboard_ctrl_node_metrics_dashboard" {
@@ -125,7 +125,7 @@ resource "null_resource" "upload_dashboard_ctrl_node_metrics_dashboard" {
   triggers = {
     always_run = timestamp()
   }
-  depends_on = [grafana_folder.ctrl_node]
+  depends_on = [null_resource.upload_dashboard_work_node_metrics_dashboard]
 }
 
 resource "null_resource" "upload_dashboard_etcd_node_metrics_dashboard" {
@@ -138,7 +138,7 @@ resource "null_resource" "upload_dashboard_etcd_node_metrics_dashboard" {
   triggers = {
     always_run = timestamp()
   }
-  depends_on = [grafana_folder.etcd_node]
+  depends_on = [null_resource.upload_dashboard_ctrl_node_metrics_dashboard]
 }
 
 resource "null_resource" "upload_dashboard_ipmi_metrics_dashboard" {
@@ -151,5 +151,5 @@ resource "null_resource" "upload_dashboard_ipmi_metrics_dashboard" {
   triggers = {
     always_run = timestamp()
   }
-  depends_on = [grafana_folder.proxmox]
+  depends_on = [null_resource.upload_dashboard_etcd_node_metrics_dashboard]
 }
