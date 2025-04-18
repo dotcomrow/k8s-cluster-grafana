@@ -8,8 +8,6 @@ terraform {
 }
 
 provider "grafana" {
-   alias = "grafana-cloud"
-
    url   = var.grafana_instance_url
    auth  = var.grafana_service_account_token
 }
