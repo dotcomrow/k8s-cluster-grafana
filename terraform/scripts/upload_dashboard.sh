@@ -8,8 +8,6 @@ API_TOKEN="$4"
 
 LOG_FILE="/tmp/grafana_upload_$(basename "$DASHBOARD_FILE" .json).log"
 
-echo "API Token in use: ${API_TOKEN}" | tee "$LOG_FILE"
-
 if [[ ! -f "$DASHBOARD_FILE" ]]; then
   echo "❌ Dashboard file not found : $DASHBOARD_FILE" | tee -a "$LOG_FILE"
   exit 1
