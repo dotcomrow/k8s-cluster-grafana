@@ -11,19 +11,6 @@ resource "null_resource" "upload_dashboard_cpu_metrics_dashboard" {
   depends_on = [grafana_folder.cpu]
 }
 
-resource "null_resource" "upload_dashboard_gpu_metrics_dashboard" {
-  provisioner "local-exec" {
-    command = "${path.module}/scripts/upload_dashboard.sh ${path.module}/dashboards/gpu_metrics_dashboard.json ${grafana_folder.gpu.uid} ${var.grafana_instance_url} ${var.grafana_ui_service_account}"
-  }
-  provisioner "local-exec" {
-    command = "cat /tmp/grafana_upload_gpu_metrics_dashboard.log || echo '⚠️ Log not found'"
-  }
-  triggers = {
-    always_run = timestamp()
-  }
-  depends_on = [null_resource.upload_dashboard_cpu_metrics_dashboard]
-}
-
 resource "null_resource" "upload_dashboard_memory_metrics_dashboard" {
   provisioner "local-exec" {
     command = "${path.module}/scripts/upload_dashboard.sh ${path.module}/dashboards/memory_metrics_dashboard.json ${grafana_folder.memory.uid} ${var.grafana_instance_url} ${var.grafana_ui_service_account}"
