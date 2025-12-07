@@ -21,7 +21,7 @@ resource "null_resource" "upload_dashboard_memory_metrics_dashboard" {
   triggers = {
     always_run = timestamp()
   }
-  depends_on = [null_resource.upload_dashboard_gpu_metrics_dashboard]
+  depends_on = [null_resource.upload_dashboard_cpu_metrics_dashboard]
 }
 
 resource "null_resource" "upload_dashboard_disk_metrics_dashboard" {
@@ -86,5 +86,5 @@ resource "null_resource" "upload_dashboard_ipmi_metrics_dashboard" {
   triggers = {
     always_run = timestamp()
   }
-  depends_on = [null_resource.upload_dashboard_etcd_node_metrics_dashboard]
+  depends_on = [null_resource.upload_dashboard_pfsense_metrics_dashboard]
 }
