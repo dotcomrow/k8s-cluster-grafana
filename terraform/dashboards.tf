@@ -89,58 +89,6 @@ resource "null_resource" "upload_dashboard_pfsense_metrics_dashboard" {
   depends_on = [null_resource.upload_dashboard_proxmox_metrics_dashboard]
 }
 
-resource "null_resource" "upload_dashboard_srvr_node_metrics_dashboard" {
-  provisioner "local-exec" {
-    command = "${path.module}/scripts/upload_dashboard.sh ${path.module}/dashboards/srvr_node_metrics_dashboard.json ${grafana_folder.srvr_node.uid} ${var.grafana_instance_url} ${var.grafana_ui_service_account}"
-  }
-  provisioner "local-exec" {
-    command = "cat /tmp/grafana_upload_srvr_node_metrics_dashboard.log || echo '⚠️ Log not found'"
-  }
-  triggers = {
-    always_run = timestamp()
-  }
-  depends_on = [null_resource.upload_dashboard_pfsense_metrics_dashboard]
-}
-
-resource "null_resource" "upload_dashboard_work_node_metrics_dashboard" {
-  provisioner "local-exec" {
-    command = "${path.module}/scripts/upload_dashboard.sh ${path.module}/dashboards/work_node_metrics_dashboard.json ${grafana_folder.work_node.uid} ${var.grafana_instance_url} ${var.grafana_ui_service_account}"
-  }
-  provisioner "local-exec" {
-    command = "cat /tmp/grafana_upload_work_node_metrics_dashboard.log || echo '⚠️ Log not found'"
-  }
-  triggers = {
-    always_run = timestamp()
-  }
-  depends_on = [null_resource.upload_dashboard_srvr_node_metrics_dashboard]
-}
-
-resource "null_resource" "upload_dashboard_ctrl_node_metrics_dashboard" {
-  provisioner "local-exec" {
-    command = "${path.module}/scripts/upload_dashboard.sh ${path.module}/dashboards/ctrl_node_metrics_dashboard.json ${grafana_folder.ctrl_node.uid} ${var.grafana_instance_url} ${var.grafana_ui_service_account}"
-  }
-  provisioner "local-exec" {
-    command = "cat /tmp/grafana_upload_ctrl_node_metrics_dashboard.log || echo '⚠️ Log not found'"
-  }
-  triggers = {
-    always_run = timestamp()
-  }
-  depends_on = [null_resource.upload_dashboard_work_node_metrics_dashboard]
-}
-
-resource "null_resource" "upload_dashboard_etcd_node_metrics_dashboard" {
-  provisioner "local-exec" {
-    command = "${path.module}/scripts/upload_dashboard.sh ${path.module}/dashboards/etcd_node_metrics_dashboard.json ${grafana_folder.etcd_node.uid} ${var.grafana_instance_url} ${var.grafana_ui_service_account}"
-  }
-  provisioner "local-exec" {
-    command = "cat /tmp/grafana_upload_etcd_node_metrics_dashboard.log || echo '⚠️ Log not found'"
-  }
-  triggers = {
-    always_run = timestamp()
-  }
-  depends_on = [null_resource.upload_dashboard_ctrl_node_metrics_dashboard]
-}
-
 resource "null_resource" "upload_dashboard_ipmi_metrics_dashboard" {
   provisioner "local-exec" {
     command = "${path.module}/scripts/upload_dashboard.sh ${path.module}/dashboards/ipmi_metrics_dashboard.json ${grafana_folder.proxmox.uid} ${var.grafana_instance_url} ${var.grafana_ui_service_account}"
