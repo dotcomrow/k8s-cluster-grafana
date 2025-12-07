@@ -9,5 +9,5 @@ terraform {
 
 provider "grafana" {
    url   = var.grafana_instance_url
-   auth  = var.grafana_service_account_token
+   auth  = var.grafana_ui_service_account
 }

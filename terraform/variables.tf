@@ -3,7 +3,7 @@ variable "grafana_instance_url" {
   type        = string
 }
 
-variable "grafana_service_account_token" {
+variable "grafana_ui_service_account" {
   description = "Service account token for Grafana"
   type        = string
 }

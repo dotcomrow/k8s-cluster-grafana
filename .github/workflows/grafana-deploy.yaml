@@ -1,4 +1,4 @@
-name: "Build and Deploy DB Schema"
+name: "Deploy Grafana Dashboards"
 
 on:
     push:
