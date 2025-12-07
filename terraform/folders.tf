@@ -14,46 +14,6 @@ output "PFSense_folder_uid" {
   value = grafana_folder.pfsense.uid
 }
 
-resource "grafana_folder" "work_node" {
-  title = "Work-Node"
-}
-
-output "Work_Node_folder_uid" {
-  value = grafana_folder.work_node.uid
-}
-
-resource "grafana_folder" "srvr_node" {
-  title = "Srvr-Node"
-}
-
-output "Srvr_Node_folder_uid" {
-  value = grafana_folder.srvr_node.uid
-}
-
-resource "grafana_folder" "etcd_node" {
-  title = "Etcd-Node"
-}
-
-output "Etcd_Node_folder_uid" {
-  value = grafana_folder.etcd_node.uid
-}
-
-resource "grafana_folder" "ctrl_node" {
-  title = "Ctrl-Node"
-}
-
-output "Ctrl_Node_folder_uid" {
-  value = grafana_folder.ctrl_node.uid
-}
-
-resource "grafana_folder" "gpu" {
-  title = "GPU"
-}
-
-output "GPU_folder_uid" {
-  value = grafana_folder.gpu.uid
-}
-
 resource "grafana_folder" "cpu" {
   title = "CPU"
 }
