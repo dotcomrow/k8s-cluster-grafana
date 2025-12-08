@@ -261,47 +261,15 @@
         "type": "prometheus",
         "uid": "grafanacloud-prom"
       },
-      "description": "Current SSD temperature in Celsius. Normal operating range is 0-70°C. Your drives are running at 73-74°C which is acceptable but slightly warm",
+      "description": "Current SSD temperature in Celsius. Normal operating range is 0-70°C. Gauges show real-time temperature with color coding: green (cool), yellow (warm), orange (hot), red (critical)",
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "thresholds"
           },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "barWidthFactor": 0.6,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "showValues": false,
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
           "mappings": [],
+          "max": 100,
+          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -341,6 +309,19 @@
           "placement": "bottom",
           "showLegend": true
         },
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "sizing": "auto",
         "tooltip": {
           "hideZeros": false,
           "mode": "single",
@@ -364,7 +345,7 @@
         }
       ],
       "title": "Drive temperature (all 6 SSDs)",
-      "type": "timeseries"
+      "type": "gauge"
     },
     {
       "datasource": {
@@ -445,6 +426,102 @@
       ],
       "title": "SSD lifetime remaining (6 drives)",
       "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "grafanacloud-prom"
+      },
+      "description": "SMART overall health status for each of the 6 SSD drives (controller 0, dev_sda, slots 0-5). Value of 1 = healthy, 0 = failed",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "color": "red",
+                  "index": 0,
+                  "text": "Failed"
+                }
+              },
+              "text": "Failed",
+              "type": "value",
+              "value": "0"
+            },
+            {
+              "options": {
+                "1": {
+                  "color": "green",
+                  "index": 1,
+                  "text": "Healthy"
+                }
+              },
+              "text": "Healthy",
+              "type": "value",
+              "value": "1"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": 0
+              },
+              {
+                "color": "green",
+                "value": 1
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 6,
+        "x": 18,
+        "y": 16
+      },
+      "id": 2,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "value",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.4.0-19576184216.patch1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "grafanacloud-prom"
+          },
+          "expr": "dell_smart_drive_health{device=\"dev_sda\"}",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "Slot {{slot}}",
+          "queryType": "range",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Drive health status (6 SSDs)",
+      "type": "stat"
     },
     {
       "datasource": {
@@ -554,46 +631,13 @@
         "type": "prometheus",
         "uid": "grafanacloud-prom"
       },
-      "description": "Total hours each drive has been powered on. Track drive age and usage patterns",
+      "description": "Total uptime for each drive shown in days, hours, minutes format. Shows current runtime for each of the 6 drives. Track drive age and usage patterns",
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "palette-classic"
+            "mode": "thresholds"
           },
-          "custom": {
-            "axisBorderShow": false,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "barWidthFactor": 0.6,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "showValues": false,
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
+          "decimals": 0,
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -603,34 +647,53 @@
                 "value": 0
               },
               {
+                "color": "yellow",
+                "value": 180000000
+              },
+              {
                 "color": "red",
-                "value": 80
+                "value": 288000000
               }
             ]
           },
-          "unit": "h"
+          "unit": "dtdhms"
         },
         "overrides": []
       },
       "gridPos": {
         "h": 8,
-        "w": 12,
+        "w": 8,
         "x": 8,
         "y": 18
       },
       "id": 9,
       "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "center",
         "legend": {
           "calcs": [],
           "displayMode": "table",
           "placement": "bottom",
           "showLegend": true
         },
+        "orientation": "horizontal",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "value_and_name",
         "tooltip": {
           "hideZeros": false,
           "mode": "single",
           "sort": "none"
-        }
+        },
+        "wideLayout": true
       },
       "pluginVersion": "12.4.0-19576184216.patch1",
       "targets": [
@@ -639,7 +702,7 @@
             "type": "prometheus",
             "uid": "grafanacloud-prom"
           },
-          "expr": "dell_smart_attr_value{attribute=\"power_on_hours\"}",
+          "expr": "dell_smart_attr_value{attribute=\"power_on_hours\"} * 3600",
           "hide": false,
           "instant": false,
           "legendFormat": "Slot {{slot}}",
@@ -648,15 +711,15 @@
           "refId": "A"
         }
       ],
-      "title": "Drive power-on hours",
-      "type": "timeseries"
+      "title": "Drive power-on time",
+      "type": "stat"
     },
     {
       "datasource": {
         "type": "prometheus",
         "uid": "grafanacloud-prom"
       },
-      "description": "SSD program (write) failure count. Higher values indicate NAND flash wear and potential write failures",
+      "description": "Normalized SMART value for program (write) failures. Scale: 100 = Healthy (no failures), lower values indicate NAND flash wear. Your drives show 100 (excellent - no write failures detected)",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -696,12 +759,47 @@
               "mode": "off"
             }
           },
-          "mappings": [],
+          "decimals": 0,
+          "mappings": [
+            {
+              "options": {
+                "from": 95,
+                "result": {
+                  "color": "green",
+                  "text": "Healthy"
+                },
+                "to": 100
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 80,
+                "result": {
+                  "color": "yellow",
+                  "text": "Warning"
+                },
+                "to": 95
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 0,
+                "result": {
+                  "color": "red",
+                  "text": "Critical"
+                },
+                "to": 80
+              },
+              "type": "range"
+            }
+          ],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
+                "color": "red",
                 "value": 0
               },
               {
@@ -709,7 +807,7 @@
                 "value": 80
               },
               {
-                "color": "red",
+                "color": "green",
                 "value": 95
               }
             ]
@@ -726,12 +824,24 @@
       },
       "id": 11,
       "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "center",
         "legend": {
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
           "showLegend": true
         },
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "value_and_name",
         "tooltip": {
           "hideZeros": false,
           "mode": "single",
@@ -762,7 +872,7 @@
         "type": "prometheus",
         "uid": "grafanacloud-prom"
       },
-      "description": "Erase failure count for SSDs. Increasing values indicate block wear and imminent drive failure",
+      "description": "Normalized SMART value for erase failures. Scale: 100 = Healthy (no failures), lower values indicate block wear and potential failure. Your drives show 100 (excellent - no erase failures detected)",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -802,12 +912,47 @@
               "mode": "off"
             }
           },
-          "mappings": [],
+          "decimals": 0,
+          "mappings": [
+            {
+              "options": {
+                "from": 95,
+                "result": {
+                  "color": "green",
+                  "text": "Healthy"
+                },
+                "to": 100
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 80,
+                "result": {
+                  "color": "yellow",
+                  "text": "Warning"
+                },
+                "to": 95
+              },
+              "type": "range"
+            },
+            {
+              "options": {
+                "from": 0,
+                "result": {
+                  "color": "red",
+                  "text": "Critical"
+                },
+                "to": 80
+              },
+              "type": "range"
+            }
+          ],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
+                "color": "red",
                 "value": 0
               },
               {
@@ -815,7 +960,7 @@
                 "value": 80
               },
               {
-                "color": "red",
+                "color": "green",
                 "value": 95
               }
             ]
@@ -832,12 +977,24 @@
       },
       "id": 12,
       "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "center",
         "legend": {
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
           "showLegend": true
         },
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "value_and_name",
         "tooltip": {
           "hideZeros": false,
           "mode": "single",
@@ -862,102 +1019,6 @@
       ],
       "title": "SSD erase failures (normalized)",
       "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "grafanacloud-prom"
-      },
-      "description": "SMART overall health status for each of the 6 SSD drives (controller 0, dev_sda, slots 0-5). Value of 1 = healthy, 0 = failed",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "color": "red",
-                  "index": 0,
-                  "text": "Failed"
-                }
-              },
-              "text": "Failed",
-              "type": "value",
-              "value": "0"
-            },
-            {
-              "options": {
-                "1": {
-                  "color": "green",
-                  "index": 1,
-                  "text": "Healthy"
-                }
-              },
-              "text": "Healthy",
-              "type": "value",
-              "value": "1"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "red",
-                "value": 0
-              },
-              {
-                "color": "green",
-                "value": 1
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 6,
-        "x": 18,
-        "y": 26
-      },
-      "id": 2,
-      "options": {
-        "colorMode": "background",
-        "graphMode": "none",
-        "justifyMode": "center",
-        "orientation": "auto",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "value",
-        "wideLayout": true
-      },
-      "pluginVersion": "12.4.0-19576184216.patch1",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "grafanacloud-prom"
-          },
-          "expr": "dell_smart_drive_health{device=\"dev_sda\"}",
-          "hide": false,
-          "instant": false,
-          "legendFormat": "Slot {{slot}}",
-          "queryType": "range",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "Drive health status (6 SSDs)",
-      "type": "stat"
     }
   ],
   "preload": false,
@@ -974,5 +1035,5 @@
   "timezone": "browser",
   "title": "Proxmox Storage Health",
   "uid": "mew4f6n",
-  "version": 8
+  "version": 13
 }
