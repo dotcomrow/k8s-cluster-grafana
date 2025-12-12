@@ -6,14 +6,6 @@ output "Proxmox_folder_uid" {
   value = grafana_folder.proxmox.uid
 }
 
-resource "grafana_folder" "pfsense" {
-  title = "PFSense"
-}
-
-output "PFSense_folder_uid" {
-  value = grafana_folder.pfsense.uid
-}
-
 resource "grafana_folder" "cpu" {
   title = "CPU"
 }
