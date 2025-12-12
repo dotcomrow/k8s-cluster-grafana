@@ -73,5 +73,5 @@ resource "null_resource" "upload_dashboard_ipmi_metrics_dashboard" {
   triggers = {
     always_run = timestamp()
   }
-  depends_on = [null_resource.upload_dashboard_pfsense_metrics_dashboard]
+  depends_on = [null_resource.upload_dashboard_proxmox_metrics_dashboard]
 }
