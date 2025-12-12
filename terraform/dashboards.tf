@@ -63,19 +63,6 @@ resource "null_resource" "upload_dashboard_proxmox_metrics_dashboard" {
   depends_on = [null_resource.upload_dashboard_network_metrics_dashboard]
 }
 
-resource "null_resource" "upload_dashboard_pfsense_metrics_dashboard" {
-  provisioner "local-exec" {
-    command = "${path.module}/scripts/upload_dashboard.sh ${path.module}/dashboards/pfsense_metrics_dashboard.json ${grafana_folder.pfsense.uid} ${var.grafana_instance_url} ${var.grafana_ui_service_account}"
-  }
-  provisioner "local-exec" {
-    command = "cat /tmp/grafana_upload_pfsense_metrics_dashboard.log || echo '⚠️ Log not found'"
-  }
-  triggers = {
-    always_run = timestamp()
-  }
-  depends_on = [null_resource.upload_dashboard_proxmox_metrics_dashboard]
-}
-
 resource "null_resource" "upload_dashboard_ipmi_metrics_dashboard" {
   provisioner "local-exec" {
     command = "${path.module}/scripts/upload_dashboard.sh ${path.module}/dashboards/ipmi_metrics_dashboard.json ${grafana_folder.proxmox.uid} ${var.grafana_instance_url} ${var.grafana_ui_service_account}"
